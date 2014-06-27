@@ -8,6 +8,8 @@
 
 #import "DMCDetailViewController.h"
 
+#import "DMCScan.h"
+
 @interface DMCDetailViewController ()
 - (void)configureView;
 @end
@@ -30,8 +32,12 @@
 {
     // Update the user interface for the detail item.
 
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+    DMCScan *scan = (DMCScan *)self.detailItem;
+    
+    if (scan) {
+        self.detailDescriptionLabel.text = [scan identifier];
+        self.detailDateLabel.text = [[scan scanDate] description];
+        self.detailCountLabel.text = [NSString stringWithFormat:@"%@", [scan count]];
     }
 }
 
