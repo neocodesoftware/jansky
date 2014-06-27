@@ -26,6 +26,7 @@
         if ([existingScan.identifier isEqualToString:scan.identifier]) {
             exists = YES;
             [existingScan incrementCount];
+            existingScan.scanDate = scan.scanDate;
             [[NSNotificationCenter defaultCenter] postNotificationName:@"CollectionChange" object:nil];
             break;
         }
