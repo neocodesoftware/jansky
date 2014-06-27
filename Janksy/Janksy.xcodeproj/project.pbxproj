@@ -535,13 +535,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Janksy/Janksy-Prefix.pch";
 				INFOPLIST_FILE = "Janksy/Janksy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9DCDC43F-C852-4614-B5E5-8EE1BB1B248C";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -557,13 +557,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Janksy/Janksy-Prefix.pch";
 				INFOPLIST_FILE = "Janksy/Janksy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9DCDC43F-C852-4614-B5E5-8EE1BB1B248C";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
