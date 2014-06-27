@@ -42,6 +42,24 @@
         scanner.session = session;
     }
     
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    
+    [nc addObserver:self selector:@selector(collectionNotification:) name:@"CollectionChange" object:nil];
+    [nc addObserver:self selector:@selector(collectionNotification:) name:@"CollectionInsert" object:nil];
+}
+
+-(void)viewWillUnload {
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    [nc removeObserver:self];
+}
+
+-(void)collectionNotification:(NSNotification *)note {
+    if ([note.name isEqualToString:@"CollectionChange"]) {
+        [self.tableView reloadData];
+    } else {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
 }
 
 - (void)didReceiveMemoryWarning

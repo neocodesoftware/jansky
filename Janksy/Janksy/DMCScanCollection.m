@@ -20,7 +20,21 @@
 -(void)addScan:(DMCScan *)scan {
     NSAssert(scan, @"Missing a scan object, dont call this with nil.");
     NSAssert([scan isKindOfClass:[DMCScan class]], @"Object is not an instance of DMCScan.");
-    [self.scans insertObject:scan atIndex:0];
+    
+    BOOL exists = NO;
+    for (DMCScan *existingScan in self.scans) {
+        if ([existingScan.identifier isEqualToString:scan.identifier]) {
+            exists = YES;
+            [existingScan incrementCount];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"CollectionChange" object:nil];
+            break;
+        }
+    }
+    
+    if (!exists) {
+        [self.scans insertObject:scan atIndex:0];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"CollectionInsert" object:nil];
+    }
 }
 
 -(void)sortByDate {

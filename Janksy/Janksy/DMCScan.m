@@ -10,6 +10,13 @@
 
 @implementation DMCScan
 
+-(instancetype)init {
+    if ((self = [super init])) {
+        self.count = @(1);
+    }
+    return self;
+}
+
 -(void)incrementCount {
     if (self.count) {
         self.count = @([self.count integerValue] + 1);
