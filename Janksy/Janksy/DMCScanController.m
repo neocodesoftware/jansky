@@ -19,6 +19,21 @@
     CTCallCenter *callCenter;
 }
 
+-(instancetype)init {
+    if ((self = [super init])) {
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(appWillEnterForeground:)
+         name:UIApplicationWillEnterForegroundNotification
+         object:nil];
+    }
+    return self;
+}
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 +(instancetype)instance {
     static DMCScanController *instance = nil;
     static dispatch_once_t onceToken;
@@ -27,6 +42,10 @@
         instance.collection = [[DMCScanCollection alloc] init];
     });
     return instance;
+}
+
+-(void)appWillEnterForeground:(NSNotification *)notification {
+    [self start];
 }
 
 -(void)setup {
@@ -56,6 +75,7 @@
     }
     
 }
+
 
 - (RcpApi *)rcp
 {
@@ -155,6 +175,7 @@
         } else {
             NSLog(@"error, invalid callback url");
         }
+        self.session = nil;
     }
     
 }
@@ -167,6 +188,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"StatusChanged" object:nil];
     
     NSLog(@"plug change: %@", (plug ? @"Plugged" : @"Unplugged"));
+    [self start];
 }
 
 - (void)pcEpcReceived:(NSData *)pcEpc {
@@ -253,6 +275,7 @@
 
 - (void)adcReceived:(NSData*)data {
     NSLog(@"adcReceived: %@", data);
+    [self start];
 }
 
 - (void)genericReceived:(NSData*)data {
