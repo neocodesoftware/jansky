@@ -35,12 +35,12 @@
     [scanner setup];
     [scanner start];
     
-    if (!scanner.session) {
+    /*if (!scanner.session) {
         // add a fake session for testing.
         DMCSession *session = [[DMCSession alloc] init];
         session.originalCall = [NSURL URLWithString:@"pic2shop://scan?callback=fmp%3A//%24/filename%3Fscript%3DScan%26param%3DEAN"];
         scanner.session = session;
-    }
+    }*/
     
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     
@@ -54,12 +54,14 @@
 }
 
 -(void)collectionNotification:(NSNotification *)note {
-    if ([note.name isEqualToString:@"CollectionChange"]) {
-        [self.tableView reloadData];
-    } else {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([note.name isEqualToString:@"CollectionChange"]) {
+            [self.tableView reloadData];
+        } else {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+            [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+    });
 }
 
 - (void)didReceiveMemoryWarning
