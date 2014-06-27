@@ -25,10 +25,6 @@
     }
 }
 
--(NSString *)description {
-    return [NSString stringWithFormat:@"Scan %@ on %@", self.identifier, self.scanDate];
-}
-
 -(NSString *)identifier {
     
     if (self.rawPcEpc) {
