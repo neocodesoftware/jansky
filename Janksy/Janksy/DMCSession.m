@@ -24,12 +24,45 @@
     NSURL *callbackUrl = [NSURL URLWithString:decoded];
     
     NSDictionary *cbParams = [callbackUrl params];
-    NSString *cbParamName = [cbParams objectForKey:@"param"];
     
-    NSString *callbackUrlString = [callbackUrl absoluteString];
-    NSString *codedCallbackUrlString = [callbackUrlString stringByAppendingFormat:@"&%@=%@",cbParamName, [scan identifier]];
+    NSMutableString *callbackUrlString = [[NSMutableString alloc] initWithFormat:@"%@://%@/%@?", [callbackUrl scheme], [callbackUrl host], [callbackUrl path]];
     
-    NSURL *codedCallbackUrl = [NSURL URLWithString:codedCallbackUrlString];
+    BOOL touched = NO;
+    BOOL appended = NO;
+    
+    for (NSString *paramName in [cbParams allKeys]) {
+        
+        if (touched) {
+            [callbackUrlString appendString:@"&"];
+        } else {
+            touched = YES;
+        }
+        
+        if ([paramName isEqualToString:@"param"]) {
+            [callbackUrlString appendFormat:@"param=%@", [scan identifier]];
+            appended = YES;
+        } else {
+            id value = cbParams[paramName];
+            if (value == [NSNull null]) {
+                [callbackUrlString appendString:paramName];
+            } else {
+                [callbackUrlString appendFormat:@"%@=%@", paramName, value];
+            }
+        }
+    }
+    
+    if (!appended) {
+        if (touched) {
+            [callbackUrlString appendString:@"&"];
+        }
+        
+        [callbackUrlString appendFormat:@"param=%@", [scan identifier]];
+    }
+    
+    //NSString *callbackUrlString = [[[callbackUrl absoluteString] componentsSeparatedByString:@"?"] firstObject];
+    //NSString *codedCallbackUrlString = [callbackUrlString stringByAppendingFormat:@"&%@=%@",cbParamName, [scan identifier]];
+    
+    NSURL *codedCallbackUrl = [NSURL URLWithString:callbackUrlString];
     
     return codedCallbackUrl;
 }
