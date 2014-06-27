@@ -7,13 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-
 #import "RcpApi.h"
+
 #import "DMCSession.h"
+#import "DMCScan.h"
 
 @interface DMCScanController : NSObject <RcpDelegate>
 
 @property (nonatomic, strong) DMCSession *session;
+
+@property (readwrite) BOOL plugged;
 
 +(instancetype)instance;
 
@@ -21,5 +24,7 @@
 
 - (void)setup;
 - (void)start;
+
+-(void)handleScan:(DMCScan *)scan;
 
 @end

@@ -23,14 +23,22 @@
 }
 
 -(NSString *)identifier {
-    NSData *data = self.rawPcEpc;
-    NSUInteger dataLength = [data length];
-    NSMutableString *string = [NSMutableString stringWithCapacity:dataLength*2];
-    const unsigned char *dataBytes = [data bytes];
-    for (NSInteger idx = 0; idx < dataLength; ++idx) {
-        [string appendFormat:@"%02x", dataBytes[idx]];
+    
+    if (self.rawPcEpc) {
+        NSData *data = self.rawPcEpc;
+        NSUInteger dataLength = [data length];
+        NSMutableString *string = [NSMutableString stringWithCapacity:dataLength*2];
+        const unsigned char *dataBytes = [data bytes];
+        for (NSInteger idx = 0; idx < dataLength; ++idx) {
+            [string appendFormat:@"%02x", dataBytes[idx]];
+        }
+        return string;
+    } else {
+        return self.string;
     }
-    return string;
+    
 }
+
+
 
 @end

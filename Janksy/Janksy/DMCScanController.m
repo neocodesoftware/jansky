@@ -13,8 +13,6 @@
 #import <CoreTelephony/CTCall.h>
 #import "RcpApi.h"
 
-#import "DMCScan.h"
-
 @implementation DMCScanController {
     RcpApi *_rcp;
     CTCallCenter *callCenter;
@@ -149,6 +147,10 @@
 #pragma mark - RcpDelegate
 
 - (void)plugged:(BOOL)plug {
+    self.plugged = plug;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"StatusChanged" object:nil];
+    
     NSLog(@"plug change: %@", (plug ? @"Plugged" : @"Unplugged"));
 }
 
@@ -159,6 +161,10 @@
     scan.rawPcEpc = pcEpc;
     scan.scanDate = [NSDate date];
     
+    [self handleScan:scan];
+}
+
+-(void)handleScan:(DMCScan *)scan {
     if (self.session) {
         NSURL *url = [self.session callbackUrlWithScan:scan];
         if (url) {
@@ -168,8 +174,7 @@
             NSLog(@"error, invalid callback url");
         }
     }
-    
-    // THIS ONE IS THE UUID
+
 }
 
 - (void)pcEpcRssiReceived:(NSData *)pcEpc rssi:(int8_t)rssi {

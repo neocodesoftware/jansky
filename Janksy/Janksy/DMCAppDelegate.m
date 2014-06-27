@@ -10,6 +10,7 @@
 
 #import "DMCScanController.h"
 
+
 @implementation DMCAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -45,12 +46,43 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+// rfid://scan?callback=fmp%3A//%24/filename%3Fscript%3DScan%26param%3DEAN
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     DMCSession *session = [[DMCSession alloc] init];
     session.originalCall = url;
     DMCScanController *scanController = [DMCScanController instance];
     scanController.session = session;
+    
+    [self handleSimulation];
+    
     return YES;
+}
+
+-(void)handleSimulation {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"simulationMode"]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Simulation Mode" message:@"Enter a code, it will be returned to the calling app using the url callback provided." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Done", nil];
+        alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+        [alert show];
+    } // else ignore
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex != [alertView cancelButtonIndex]) {
+        // behave as though the text input was scanned.
+        UITextField *inputField = [alertView textFieldAtIndex:0];
+        
+        DMCScan *scan = [[DMCScan alloc] init];
+        scan.string = inputField.text;
+        scan.scanDate = [NSDate date];
+        DMCScanController *scanner = [DMCScanController instance];
+        [scanner handleScan:scan];
+    }
+}
+
+- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView {
+    UITextField *inputField = [alertView textFieldAtIndex:0];
+    
+    return [[inputField text] length] > 0;
 }
 
 @end

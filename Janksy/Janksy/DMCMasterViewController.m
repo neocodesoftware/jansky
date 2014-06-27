@@ -39,9 +39,12 @@
     [scanner setup];
     [scanner start];
     
-    DMCSession *session = [[DMCSession alloc] init];
-    session.originalCall = [NSURL URLWithString:@"pic2shop://scan?callback=fmp%3A//%24/filename%3Fscript%3DScan%26param%3DEAN"];
-    scanner.session = session;
+    if (!scanner.session) {
+        // add a fake session for testing.
+        DMCSession *session = [[DMCSession alloc] init];
+        session.originalCall = [NSURL URLWithString:@"pic2shop://scan?callback=fmp%3A//%24/filename%3Fscript%3DScan%26param%3DEAN"];
+        scanner.session = session;
+    }
     
 }
 

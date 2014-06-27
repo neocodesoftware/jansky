@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DMCAppDelegate : UIResponder <UIApplicationDelegate>
+@interface DMCAppDelegate : UIResponder <UIApplicationDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
