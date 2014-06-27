@@ -10,4 +10,12 @@
 
 @interface DMCScan : NSObject
 
+@property (nonatomic, strong) NSData *rawPcEpc;
+@property (nonatomic, strong) NSDate *scanDate;
+@property (nonatomic, strong) NSNumber *count;
+
+-(void)incrementCount;
+
+-(NSString *)identifier;
+
 @end

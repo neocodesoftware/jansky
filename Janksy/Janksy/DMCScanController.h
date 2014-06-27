@@ -8,6 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DMCScanController : NSObject
+#import "RcpApi.h"
+#import "DMCSession.h"
+
+@interface DMCScanController : NSObject <RcpDelegate>
+
+@property (nonatomic, strong) DMCSession *session;
+
++(instancetype)instance;
+
+- (RcpApi *)rcp;
+
+- (void)setup;
+- (void)start;
 
 @end

@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+#import "DMCScan.h"
+
 @interface DMCScanCollection : NSObject
+
+@property (nonatomic, strong) NSMutableArray *scans;
+
+-(void)addScan:(DMCScan *)scan;
+
+-(void)sortByDate;
 
 @end

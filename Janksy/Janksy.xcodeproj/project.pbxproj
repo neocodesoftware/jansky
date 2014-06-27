@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B1ECC17194D47E800B26A34 /* DMCSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1ECC16194D47E800B26A34 /* DMCSession.m */; };
+		8B1ECC18194D47E800B26A34 /* DMCSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1ECC16194D47E800B26A34 /* DMCSession.m */; };
+		8B300B45195CDB2300C068B5 /* NSURL+Params.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B300B44195CDB2300C068B5 /* NSURL+Params.m */; };
+		8B483448195A4B7000E09BA8 /* A100_IL1001-21_iPhoneLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B483447195A4B7000E09BA8 /* A100_IL1001-21_iPhoneLibrary.a */; };
+		8B48344E195A4C5A00E09BA8 /* DMCScanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B48344D195A4C5A00E09BA8 /* DMCScanController.m */; };
+		8B483450195B6A1900E09BA8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B48344F195B6A1900E09BA8 /* AVFoundation.framework */; };
+		8B483452195B6A2600E09BA8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B483451195B6A2600E09BA8 /* CoreTelephony.framework */; };
+		8B483454195B6AA000E09BA8 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B483453195B6AA000E09BA8 /* libc++.dylib */; };
 		8B7AE687194D0E7900BFBFC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7AE686194D0E7900BFBFC8 /* Foundation.framework */; };
 		8B7AE689194D0E7900BFBFC8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7AE688194D0E7900BFBFC8 /* CoreGraphics.framework */; };
 		8B7AE68B194D0E7900BFBFC8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7AE68A194D0E7900BFBFC8 /* UIKit.framework */; };
@@ -22,6 +30,12 @@
 		8B7AE6AB194D0E7900BFBFC8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7AE68A194D0E7900BFBFC8 /* UIKit.framework */; };
 		8B7AE6B3194D0E7900BFBFC8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B7AE6B1194D0E7900BFBFC8 /* InfoPlist.strings */; };
 		8B7AE6B5194D0E7900BFBFC8 /* JanksyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7AE6B4194D0E7900BFBFC8 /* JanksyTests.m */; };
+		8B7AE6C1194D0F3000BFBFC8 /* DMCScanCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7AE6C0194D0F3000BFBFC8 /* DMCScanCollection.m */; };
+		8B7AE6C2194D0F3000BFBFC8 /* DMCScanCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7AE6C0194D0F3000BFBFC8 /* DMCScanCollection.m */; };
+		8B7AE6C5194D0F3C00BFBFC8 /* DMCScan.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7AE6C4194D0F3C00BFBFC8 /* DMCScan.m */; };
+		8B7AE6C6194D0F3C00BFBFC8 /* DMCScan.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7AE6C4194D0F3C00BFBFC8 /* DMCScan.m */; };
+		8BC66193195B8F1500D4EF88 /* DMCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC66192195B8F1500D4EF88 /* DMCSettingsViewController.m */; };
+		9B3F26CD1C7B4C8C95FD7DA7 /* libPods-Janksy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82EBDE1C609C465B9C667AEF /* libPods-Janksy.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +49,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		82EBDE1C609C465B9C667AEF /* libPods-Janksy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Janksy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		857F20A073B047ABAA0A6D84 /* Pods-Janksy.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Janksy.xcconfig"; path = "Pods/Pods-Janksy.xcconfig"; sourceTree = "<group>"; };
+		8B1ECC15194D47E800B26A34 /* DMCSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMCSession.h; sourceTree = "<group>"; };
+		8B1ECC16194D47E800B26A34 /* DMCSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMCSession.m; sourceTree = "<group>"; };
+		8B300B43195CDB2300C068B5 /* NSURL+Params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Params.h"; sourceTree = "<group>"; };
+		8B300B44195CDB2300C068B5 /* NSURL+Params.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+Params.m"; sourceTree = "<group>"; };
+		8B483447195A4B7000E09BA8 /* A100_IL1001-21_iPhoneLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "A100_IL1001-21_iPhoneLibrary.a"; sourceTree = "<group>"; };
+		8B483449195A4B7A00E09BA8 /* AudioMgr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioMgr.h; sourceTree = "<group>"; };
+		8B48344A195A4B7A00E09BA8 /* RcpApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RcpApi.h; sourceTree = "<group>"; };
+		8B48344C195A4C5A00E09BA8 /* DMCScanController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMCScanController.h; sourceTree = "<group>"; };
+		8B48344D195A4C5A00E09BA8 /* DMCScanController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMCScanController.m; sourceTree = "<group>"; };
+		8B48344F195B6A1900E09BA8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		8B483451195B6A2600E09BA8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		8B483453195B6AA000E09BA8 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		8B7AE683194D0E7900BFBFC8 /* Janksy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Janksy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7AE686194D0E7900BFBFC8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8B7AE688194D0E7900BFBFC8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -56,6 +84,12 @@
 		8B7AE6B0194D0E7900BFBFC8 /* JanksyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JanksyTests-Info.plist"; sourceTree = "<group>"; };
 		8B7AE6B2194D0E7900BFBFC8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8B7AE6B4194D0E7900BFBFC8 /* JanksyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JanksyTests.m; sourceTree = "<group>"; };
+		8B7AE6BF194D0F3000BFBFC8 /* DMCScanCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMCScanCollection.h; sourceTree = "<group>"; };
+		8B7AE6C0194D0F3000BFBFC8 /* DMCScanCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMCScanCollection.m; sourceTree = "<group>"; };
+		8B7AE6C3194D0F3C00BFBFC8 /* DMCScan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMCScan.h; sourceTree = "<group>"; };
+		8B7AE6C4194D0F3C00BFBFC8 /* DMCScan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMCScan.m; sourceTree = "<group>"; };
+		8BC66191195B8F1500D4EF88 /* DMCSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMCSettingsViewController.h; sourceTree = "<group>"; };
+		8BC66192195B8F1500D4EF88 /* DMCSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMCSettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,9 +97,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B483454195B6AA000E09BA8 /* libc++.dylib in Frameworks */,
+				8B483452195B6A2600E09BA8 /* CoreTelephony.framework in Frameworks */,
+				8B483450195B6A1900E09BA8 /* AVFoundation.framework in Frameworks */,
 				8B7AE689194D0E7900BFBFC8 /* CoreGraphics.framework in Frameworks */,
+				8B483448195A4B7000E09BA8 /* A100_IL1001-21_iPhoneLibrary.a in Frameworks */,
 				8B7AE68B194D0E7900BFBFC8 /* UIKit.framework in Frameworks */,
 				8B7AE687194D0E7900BFBFC8 /* Foundation.framework in Frameworks */,
+				9B3F26CD1C7B4C8C95FD7DA7 /* libPods-Janksy.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +121,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B1ECC13194D3D0D00B26A34 /* Master View */ = {
+			isa = PBXGroup;
+			children = (
+				8B7AE69B194D0E7900BFBFC8 /* DMCMasterViewController.h */,
+				8B7AE69C194D0E7900BFBFC8 /* DMCMasterViewController.m */,
+			);
+			name = "Master View";
+			sourceTree = "<group>";
+		};
+		8B1ECC14194D47CD00B26A34 /* Controller and Session */ = {
+			isa = PBXGroup;
+			children = (
+				8B48344C195A4C5A00E09BA8 /* DMCScanController.h */,
+				8B48344D195A4C5A00E09BA8 /* DMCScanController.m */,
+				8B1ECC15194D47E800B26A34 /* DMCSession.h */,
+				8B1ECC16194D47E800B26A34 /* DMCSession.m */,
+			);
+			name = "Controller and Session";
+			sourceTree = "<group>";
+		};
+		8B48344B195A4B8000E09BA8 /* Arete POP */ = {
+			isa = PBXGroup;
+			children = (
+				8B483449195A4B7A00E09BA8 /* AudioMgr.h */,
+				8B48344A195A4B7A00E09BA8 /* RcpApi.h */,
+				82EBDE1C609C465B9C667AEF /* libPods-Janksy.a */,
+			);
+			name = "Arete POP";
+			sourceTree = "<group>";
+		};
 		8B7AE67A194D0E7900BFBFC8 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +158,7 @@
 				8B7AE6AE194D0E7900BFBFC8 /* JanksyTests */,
 				8B7AE685194D0E7900BFBFC8 /* Frameworks */,
 				8B7AE684194D0E7900BFBFC8 /* Products */,
+				857F20A073B047ABAA0A6D84 /* Pods-Janksy.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,6 +174,11 @@
 		8B7AE685194D0E7900BFBFC8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B483453195B6AA000E09BA8 /* libc++.dylib */,
+				8B483451195B6A2600E09BA8 /* CoreTelephony.framework */,
+				8B48344F195B6A1900E09BA8 /* AVFoundation.framework */,
+				8B48344B195A4B8000E09BA8 /* Arete POP */,
+				8B483447195A4B7000E09BA8 /* A100_IL1001-21_iPhoneLibrary.a */,
 				8B7AE686194D0E7900BFBFC8 /* Foundation.framework */,
 				8B7AE688194D0E7900BFBFC8 /* CoreGraphics.framework */,
 				8B7AE68A194D0E7900BFBFC8 /* UIKit.framework */,
@@ -118,8 +193,9 @@
 				8B7AE695194D0E7900BFBFC8 /* DMCAppDelegate.h */,
 				8B7AE696194D0E7900BFBFC8 /* DMCAppDelegate.m */,
 				8B7AE698194D0E7900BFBFC8 /* Main.storyboard */,
-				8B7AE69B194D0E7900BFBFC8 /* DMCMasterViewController.h */,
-				8B7AE69C194D0E7900BFBFC8 /* DMCMasterViewController.m */,
+				8B1ECC13194D3D0D00B26A34 /* Master View */,
+				8BC66190195B8E8900D4EF88 /* Settings View */,
+				8B7AE6BE194D0F0A00BFBFC8 /* Model */,
 				8B7AE69E194D0E7900BFBFC8 /* DMCDetailViewController.h */,
 				8B7AE69F194D0E7900BFBFC8 /* DMCDetailViewController.m */,
 				8B7AE6A1194D0E7900BFBFC8 /* Images.xcassets */,
@@ -157,6 +233,29 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8B7AE6BE194D0F0A00BFBFC8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8B1ECC14194D47CD00B26A34 /* Controller and Session */,
+				8B7AE6BF194D0F3000BFBFC8 /* DMCScanCollection.h */,
+				8B7AE6C0194D0F3000BFBFC8 /* DMCScanCollection.m */,
+				8B7AE6C3194D0F3C00BFBFC8 /* DMCScan.h */,
+				8B7AE6C4194D0F3C00BFBFC8 /* DMCScan.m */,
+				8B300B43195CDB2300C068B5 /* NSURL+Params.h */,
+				8B300B44195CDB2300C068B5 /* NSURL+Params.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		8BC66190195B8E8900D4EF88 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				8BC66191195B8F1500D4EF88 /* DMCSettingsViewController.h */,
+				8BC66192195B8F1500D4EF88 /* DMCSettingsViewController.m */,
+			);
+			name = "Settings View";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -164,9 +263,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B7AE6B8194D0E7900BFBFC8 /* Build configuration list for PBXNativeTarget "Janksy" */;
 			buildPhases = (
+				AE04E788B5D5429F94344EDD /* Check Pods Manifest.lock */,
 				8B7AE67F194D0E7900BFBFC8 /* Sources */,
 				8B7AE680194D0E7900BFBFC8 /* Frameworks */,
 				8B7AE681194D0E7900BFBFC8 /* Resources */,
+				E76F810B3D504589A2D8C5A2 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -205,6 +306,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Davander Mobile Corporation";
 				TargetAttributes = {
+					8B7AE682194D0E7900BFBFC8 = {
+						DevelopmentTeam = PK859SX878;
+					};
 					8B7AE6A6194D0E7900BFBFC8 = {
 						TestTargetID = 8B7AE682194D0E7900BFBFC8;
 					};
@@ -250,15 +354,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		AE04E788B5D5429F94344EDD /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E76F810B3D504589A2D8C5A2 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Janksy-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8B7AE67F194D0E7900BFBFC8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BC66193195B8F1500D4EF88 /* DMCSettingsViewController.m in Sources */,
 				8B7AE693194D0E7900BFBFC8 /* main.m in Sources */,
 				8B7AE69D194D0E7900BFBFC8 /* DMCMasterViewController.m in Sources */,
 				8B7AE6A0194D0E7900BFBFC8 /* DMCDetailViewController.m in Sources */,
+				8B300B45195CDB2300C068B5 /* NSURL+Params.m in Sources */,
+				8B48344E195A4C5A00E09BA8 /* DMCScanController.m in Sources */,
+				8B7AE6C5194D0F3C00BFBFC8 /* DMCScan.m in Sources */,
 				8B7AE697194D0E7900BFBFC8 /* DMCAppDelegate.m in Sources */,
+				8B1ECC17194D47E800B26A34 /* DMCSession.m in Sources */,
+				8B7AE6C1194D0F3000BFBFC8 /* DMCScanCollection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +409,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B7AE6C6194D0F3C00BFBFC8 /* DMCScan.m in Sources */,
 				8B7AE6B5194D0E7900BFBFC8 /* JanksyTests.m in Sources */,
+				8B7AE6C2194D0F3000BFBFC8 /* DMCScanCollection.m in Sources */,
+				8B1ECC18194D47E800B26A34 /* DMCSession.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,26 +526,44 @@
 		};
 		8B7AE6B9194D0E7900BFBFC8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 857F20A073B047ABAA0A6D84 /* Pods-Janksy.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Janksy/Janksy-Prefix.pch";
 				INFOPLIST_FILE = "Janksy/Janksy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		8B7AE6BA194D0E7900BFBFC8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 857F20A073B047ABAA0A6D84 /* Pods-Janksy.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Janksy/Janksy-Prefix.pch";
 				INFOPLIST_FILE = "Janksy/Janksy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -463,6 +627,7 @@
 				8B7AE6BA194D0E7900BFBFC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8B7AE6BB194D0E7900BFBFC8 /* Build configuration list for PBXNativeTarget "JanksyTests" */ = {
 			isa = XCConfigurationList;
@@ -471,6 +636,7 @@
 				8B7AE6BD194D0E7900BFBFC8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

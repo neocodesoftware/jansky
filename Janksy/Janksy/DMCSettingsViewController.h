@@ -10,4 +10,9 @@
 
 @interface DMCSettingsViewController : UITableViewController
 
+@property (nonatomic, strong) IBOutlet UILabel *statusLabel;
+@property (nonatomic, strong) IBOutlet UISwitch *simulationSwitch;
+
+-(IBAction)simulationSwitchAction:(id)sender;
+
 @end

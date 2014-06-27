@@ -10,4 +10,6 @@
 
 @interface NSURL (Params)
 
+-(NSDictionary *)params;
+
 @end

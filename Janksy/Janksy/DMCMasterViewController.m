@@ -10,16 +10,20 @@
 
 #import "DMCDetailViewController.h"
 
-@interface DMCMasterViewController () {
-    NSMutableArray *_objects;
-}
-@end
+#import "DMCScanCollection.h"
+
+#import "NSDate+DateTools.h"
+
+#import "DMCScanController.h"
+
+#import "DMCSession.h"
 
 @implementation DMCMasterViewController
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    self.collection = [[DMCScanCollection alloc] init];
 }
 
 - (void)viewDidLoad
@@ -30,6 +34,15 @@
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
+    
+    DMCScanController *scanner = [DMCScanController instance];
+    [scanner setup];
+    [scanner start];
+    
+    DMCSession *session = [[DMCSession alloc] init];
+    session.originalCall = [NSURL URLWithString:@"pic2shop://scan?callback=fmp%3A//%24/filename%3Fscript%3DScan%26param%3DEAN"];
+    scanner.session = session;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,10 +53,13 @@
 
 - (void)insertNewObject:(id)sender
 {
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
-    }
-    [_objects insertObject:[NSDate date] atIndex:0];
+
+    DMCScan *scan = [[DMCScan alloc] init];
+    scan.scanDate = [NSDate date];
+    //scan.rawPcEpc = [[[NSUUID alloc] init] UUIDString];
+    
+    [_collection addScan:scan];
+    
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
@@ -57,15 +73,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    return _collection.scans.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    DMCScan *object = _collection.scans[indexPath.row];
+    cell.textLabel.text = [object identifier];
+    cell.detailTextLabel.text = [object.scanDate timeAgoSinceNow];
     return cell;
 }
 
@@ -78,7 +95,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_objects removeObjectAtIndex:indexPath.row];
+        [_collection.scans removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
@@ -105,9 +122,33 @@
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
+        DMCScan *scan = _collection.scans[indexPath.row];
+        [[segue destinationViewController] setDetailItem:scan];
     }
+}
+
+#pragma mark - Button Actions
+
+-(IBAction)cancelButtonAction:(id)sender {
+    UIBarButtonItem *scanButton = [[UIBarButtonItem alloc] initWithTitle:@"Scan" style:UIBarButtonItemStylePlain target:self action:@selector(scanButtonAction:)];
+    
+    NSUInteger index = [self.toolbarItems indexOfObject:sender];
+    NSMutableArray *toolbarItems = [self.toolbarItems mutableCopy];
+    [toolbarItems replaceObjectAtIndex:index withObject:scanButton];
+    
+    [self setToolbarItems:toolbarItems animated:YES];
+    self.scanCancelButton = scanButton;
+}
+
+-(IBAction)scanButtonAction:(id)sender {
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonAction:)];
+    
+    NSUInteger index = [self.toolbarItems indexOfObject:sender];
+    NSMutableArray *toolbarItems = [self.toolbarItems mutableCopy];
+    [toolbarItems replaceObjectAtIndex:index withObject:cancelButton];
+    
+    [self setToolbarItems:toolbarItems animated:YES];
+    self.scanCancelButton = cancelButton;
 }
 
 @end

@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class DMCScan;
+
 @interface DMCSession : NSObject
+
+@property (nonatomic, strong) NSURL *originalCall;
+@property (readonly) BOOL simulationMode;
+@property (readonly) NSString *callback;
+
+-(NSURL *)callbackUrlWithScan:(DMCScan *)scan; // generate a callback url using the scan.
 
 @end
