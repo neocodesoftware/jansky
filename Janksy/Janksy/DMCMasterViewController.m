@@ -23,7 +23,6 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.collection = [[DMCScanCollection alloc] init];
 }
 
 - (void)viewDidLoad
@@ -32,9 +31,6 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
-    
     DMCScanController *scanner = [DMCScanController instance];
     [scanner setup];
     [scanner start];
@@ -54,14 +50,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)insertNewObject:(id)sender
-{
+- (void)insertNewObject:(id)sender {
 
     DMCScan *scan = [[DMCScan alloc] init];
     scan.scanDate = [NSDate date];
     //scan.rawPcEpc = [[[NSUUID alloc] init] UUIDString];
     
-    [_collection addScan:scan];
+    DMCScanController *controller = [DMCScanController instance];
+    [controller.collection addScan:scan];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -69,28 +65,30 @@
 
 #pragma mark - Table View
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return _collection.scans.count;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    DMCScanController *controller = [DMCScanController instance];
+    return controller.collection.scans.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    DMCScan *object = _collection.scans[indexPath.row];
-    cell.textLabel.text = [object identifier];
+    
+    DMCScanController *controller = [DMCScanController instance];
+    DMCScan *object = controller.collection.scans[indexPath.row];
+    if ([object.count integerValue] > 1) {
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [object count], [object identifier]];
+    } else {
+        cell.textLabel.text = [object identifier];
+    }
     cell.detailTextLabel.text = [object.scanDate timeAgoSinceNow];
     return cell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
@@ -98,7 +96,8 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_collection.scans removeObjectAtIndex:indexPath.row];
+        DMCScanController *controller = [DMCScanController instance];
+        [controller.collection.scans removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
@@ -125,7 +124,8 @@
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        DMCScan *scan = _collection.scans[indexPath.row];
+        DMCScanController *controller = [DMCScanController instance];
+        DMCScan *scan = controller.collection.scans[indexPath.row];
         [[segue destinationViewController] setDetailItem:scan];
     }
 }

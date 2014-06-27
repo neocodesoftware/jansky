@@ -8,11 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class DMCScanCollection, DMCScanController;
+@class DMCScanController;
 
 @interface DMCMasterViewController : UITableViewController
-
-@property (nonatomic, strong) DMCScanCollection *collection;
 
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *scanCancelButton;
 

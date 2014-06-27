@@ -11,9 +11,11 @@
 
 #import "DMCSession.h"
 #import "DMCScan.h"
+@class DMCScanCollection;
 
 @interface DMCScanController : NSObject <RcpDelegate>
 
+@property (nonatomic, strong) DMCScanCollection *collection;
 @property (nonatomic, strong) DMCSession *session;
 
 @property (readwrite) BOOL plugged;

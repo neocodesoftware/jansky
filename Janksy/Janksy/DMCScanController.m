@@ -7,6 +7,7 @@
 //
 
 #import "DMCScanController.h"
+#import "DMCScanCollection.h"
 
 #import <AVFoundation/AVFoundation.h>
 #import <CoreTelephony/CTCallCenter.h>
@@ -23,6 +24,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [[DMCScanController alloc] init];
+        instance.collection = [[DMCScanCollection alloc] init];
     });
     return instance;
 }
@@ -143,6 +145,19 @@
     }
 }
 
+-(void)handleScan:(DMCScan *)scan { // called by RcpDelegate method below, and by DMCAppDelegate when in simulation mode
+    [self.collection addScan:scan];
+    if (self.session) {
+        NSURL *url = [self.session callbackUrlWithScan:scan];
+        if (url) {
+            NSLog(@"Opening url %@", url);
+            [[UIApplication sharedApplication] openURL:url];
+        } else {
+            NSLog(@"error, invalid callback url");
+        }
+    }
+    
+}
 
 #pragma mark - RcpDelegate
 
@@ -162,19 +177,6 @@
     scan.scanDate = [NSDate date];
     
     [self handleScan:scan];
-}
-
--(void)handleScan:(DMCScan *)scan {
-    if (self.session) {
-        NSURL *url = [self.session callbackUrlWithScan:scan];
-        if (url) {
-            NSLog(@"Opening url %@", url);
-            [[UIApplication sharedApplication] openURL:url];
-        } else {
-            NSLog(@"error, invalid callback url");
-        }
-    }
-
 }
 
 - (void)pcEpcRssiReceived:(NSData *)pcEpc rssi:(int8_t)rssi {
