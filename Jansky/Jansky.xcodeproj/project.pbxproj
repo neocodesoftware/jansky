@@ -53,8 +53,8 @@
 		857F20A073B047ABAA0A6D84 /* Pods-Janksy.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Janksy.xcconfig"; path = "Pods/Pods-Janksy.xcconfig"; sourceTree = "<group>"; };
 		8B1ECC15194D47E800B26A34 /* DMCSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMCSession.h; sourceTree = "<group>"; };
 		8B1ECC16194D47E800B26A34 /* DMCSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMCSession.m; sourceTree = "<group>"; };
-		8B300B43195CDB2300C068B5 /* NSURL+Params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Params.h"; sourceTree = "<group>"; };
-		8B300B44195CDB2300C068B5 /* NSURL+Params.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+Params.m"; sourceTree = "<group>"; };
+		8B300B43195CDB2300C068B5 /* NSURL+Params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+Params.h"; path = "Jansky/NSURL+Params.h"; sourceTree = SOURCE_ROOT; };
+		8B300B44195CDB2300C068B5 /* NSURL+Params.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+Params.m"; path = "Jansky/NSURL+Params.m"; sourceTree = SOURCE_ROOT; };
 		8B483447195A4B7000E09BA8 /* A100_IL1001-21_iPhoneLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "A100_IL1001-21_iPhoneLibrary.a"; sourceTree = "<group>"; };
 		8B483449195A4B7A00E09BA8 /* AudioMgr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioMgr.h; sourceTree = "<group>"; };
 		8B48344A195A4B7A00E09BA8 /* RcpApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RcpApi.h; sourceTree = "<group>"; };
@@ -63,33 +63,33 @@
 		8B48344F195B6A1900E09BA8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		8B483451195B6A2600E09BA8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		8B483453195B6AA000E09BA8 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		8B7AE683194D0E7900BFBFC8 /* Janksy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Janksy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B7AE683194D0E7900BFBFC8 /* Jansky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jansky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7AE686194D0E7900BFBFC8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8B7AE688194D0E7900BFBFC8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8B7AE68A194D0E7900BFBFC8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		8B7AE68E194D0E7900BFBFC8 /* Janksy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Janksy-Info.plist"; sourceTree = "<group>"; };
+		8B7AE68E194D0E7900BFBFC8 /* Jansky-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Jansky-Info.plist"; sourceTree = "<group>"; };
 		8B7AE690194D0E7900BFBFC8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		8B7AE692194D0E7900BFBFC8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8B7AE694194D0E7900BFBFC8 /* Janksy-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Janksy-Prefix.pch"; sourceTree = "<group>"; };
-		8B7AE695194D0E7900BFBFC8 /* DMCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMCAppDelegate.h; sourceTree = "<group>"; };
-		8B7AE696194D0E7900BFBFC8 /* DMCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMCAppDelegate.m; sourceTree = "<group>"; };
+		8B7AE692194D0E7900BFBFC8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Jansky/main.m; sourceTree = SOURCE_ROOT; };
+		8B7AE694194D0E7900BFBFC8 /* Jansky-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Jansky-Prefix.pch"; sourceTree = "<group>"; };
+		8B7AE695194D0E7900BFBFC8 /* DMCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DMCAppDelegate.h; path = Jansky/DMCAppDelegate.h; sourceTree = SOURCE_ROOT; };
+		8B7AE696194D0E7900BFBFC8 /* DMCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DMCAppDelegate.m; path = Jansky/DMCAppDelegate.m; sourceTree = SOURCE_ROOT; };
 		8B7AE699194D0E7900BFBFC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8B7AE69B194D0E7900BFBFC8 /* DMCMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMCMasterViewController.h; sourceTree = "<group>"; };
-		8B7AE69C194D0E7900BFBFC8 /* DMCMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMCMasterViewController.m; sourceTree = "<group>"; };
-		8B7AE69E194D0E7900BFBFC8 /* DMCDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DMCDetailViewController.h; sourceTree = "<group>"; };
-		8B7AE69F194D0E7900BFBFC8 /* DMCDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMCDetailViewController.m; sourceTree = "<group>"; };
-		8B7AE6A1194D0E7900BFBFC8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		8B7AE6A7194D0E7900BFBFC8 /* JanksyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JanksyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B7AE69B194D0E7900BFBFC8 /* DMCMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DMCMasterViewController.h; path = Jansky/DMCMasterViewController.h; sourceTree = SOURCE_ROOT; };
+		8B7AE69C194D0E7900BFBFC8 /* DMCMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DMCMasterViewController.m; path = Jansky/DMCMasterViewController.m; sourceTree = SOURCE_ROOT; };
+		8B7AE69E194D0E7900BFBFC8 /* DMCDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DMCDetailViewController.h; path = Jansky/DMCDetailViewController.h; sourceTree = SOURCE_ROOT; };
+		8B7AE69F194D0E7900BFBFC8 /* DMCDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DMCDetailViewController.m; path = Jansky/DMCDetailViewController.m; sourceTree = SOURCE_ROOT; };
+		8B7AE6A1194D0E7900BFBFC8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Jansky/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		8B7AE6A7194D0E7900BFBFC8 /* JanskyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JanskyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7AE6A8194D0E7900BFBFC8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		8B7AE6B0194D0E7900BFBFC8 /* JanksyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JanksyTests-Info.plist"; sourceTree = "<group>"; };
+		8B7AE6B0194D0E7900BFBFC8 /* JanskyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JanskyTests-Info.plist"; sourceTree = "<group>"; };
 		8B7AE6B2194D0E7900BFBFC8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8B7AE6B4194D0E7900BFBFC8 /* JanksyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JanksyTests.m; sourceTree = "<group>"; };
-		8B7AE6BF194D0F3000BFBFC8 /* DMCScanCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMCScanCollection.h; sourceTree = "<group>"; };
-		8B7AE6C0194D0F3000BFBFC8 /* DMCScanCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMCScanCollection.m; sourceTree = "<group>"; };
-		8B7AE6C3194D0F3C00BFBFC8 /* DMCScan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMCScan.h; sourceTree = "<group>"; };
-		8B7AE6C4194D0F3C00BFBFC8 /* DMCScan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMCScan.m; sourceTree = "<group>"; };
-		8BC66191195B8F1500D4EF88 /* DMCSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMCSettingsViewController.h; sourceTree = "<group>"; };
-		8BC66192195B8F1500D4EF88 /* DMCSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMCSettingsViewController.m; sourceTree = "<group>"; };
+		8B7AE6BF194D0F3000BFBFC8 /* DMCScanCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DMCScanCollection.h; path = Jansky/DMCScanCollection.h; sourceTree = SOURCE_ROOT; };
+		8B7AE6C0194D0F3000BFBFC8 /* DMCScanCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DMCScanCollection.m; path = Jansky/DMCScanCollection.m; sourceTree = SOURCE_ROOT; };
+		8B7AE6C3194D0F3C00BFBFC8 /* DMCScan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DMCScan.h; path = Jansky/DMCScan.h; sourceTree = SOURCE_ROOT; };
+		8B7AE6C4194D0F3C00BFBFC8 /* DMCScan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DMCScan.m; path = Jansky/DMCScan.m; sourceTree = SOURCE_ROOT; };
+		8BC66191195B8F1500D4EF88 /* DMCSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DMCSettingsViewController.h; path = Jansky/DMCSettingsViewController.h; sourceTree = SOURCE_ROOT; };
+		8BC66192195B8F1500D4EF88 /* DMCSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DMCSettingsViewController.m; path = Jansky/DMCSettingsViewController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +128,8 @@
 				8B7AE69C194D0E7900BFBFC8 /* DMCMasterViewController.m */,
 			);
 			name = "Master View";
-			sourceTree = "<group>";
+			path = Jansky;
+			sourceTree = SOURCE_ROOT;
 		};
 		8B1ECC14194D47CD00B26A34 /* Controller and Session */ = {
 			isa = PBXGroup;
@@ -139,7 +140,8 @@
 				8B1ECC16194D47E800B26A34 /* DMCSession.m */,
 			);
 			name = "Controller and Session";
-			sourceTree = "<group>";
+			path = Jansky;
+			sourceTree = SOURCE_ROOT;
 		};
 		8B48344B195A4B8000E09BA8 /* Arete POP */ = {
 			isa = PBXGroup;
@@ -154,8 +156,8 @@
 		8B7AE67A194D0E7900BFBFC8 = {
 			isa = PBXGroup;
 			children = (
-				8B7AE68C194D0E7900BFBFC8 /* Janksy */,
-				8B7AE6AE194D0E7900BFBFC8 /* JanksyTests */,
+				8B7AE68C194D0E7900BFBFC8 /* Jansky */,
+				8B7AE6AE194D0E7900BFBFC8 /* JanskyTests */,
 				8B7AE685194D0E7900BFBFC8 /* Frameworks */,
 				8B7AE684194D0E7900BFBFC8 /* Products */,
 				857F20A073B047ABAA0A6D84 /* Pods-Janksy.xcconfig */,
@@ -165,8 +167,8 @@
 		8B7AE684194D0E7900BFBFC8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8B7AE683194D0E7900BFBFC8 /* Janksy.app */,
-				8B7AE6A7194D0E7900BFBFC8 /* JanksyTests.xctest */,
+				8B7AE683194D0E7900BFBFC8 /* Jansky.app */,
+				8B7AE6A7194D0E7900BFBFC8 /* JanskyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -187,7 +189,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8B7AE68C194D0E7900BFBFC8 /* Janksy */ = {
+		8B7AE68C194D0E7900BFBFC8 /* Jansky */ = {
 			isa = PBXGroup;
 			children = (
 				8B7AE695194D0E7900BFBFC8 /* DMCAppDelegate.h */,
@@ -201,33 +203,35 @@
 				8B7AE6A1194D0E7900BFBFC8 /* Images.xcassets */,
 				8B7AE68D194D0E7900BFBFC8 /* Supporting Files */,
 			);
+			name = Jansky;
 			path = Janksy;
 			sourceTree = "<group>";
 		};
 		8B7AE68D194D0E7900BFBFC8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8B7AE68E194D0E7900BFBFC8 /* Janksy-Info.plist */,
+				8B7AE68E194D0E7900BFBFC8 /* Jansky-Info.plist */,
 				8B7AE68F194D0E7900BFBFC8 /* InfoPlist.strings */,
 				8B7AE692194D0E7900BFBFC8 /* main.m */,
-				8B7AE694194D0E7900BFBFC8 /* Janksy-Prefix.pch */,
+				8B7AE694194D0E7900BFBFC8 /* Jansky-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
+			path = Jansky;
+			sourceTree = SOURCE_ROOT;
 		};
-		8B7AE6AE194D0E7900BFBFC8 /* JanksyTests */ = {
+		8B7AE6AE194D0E7900BFBFC8 /* JanskyTests */ = {
 			isa = PBXGroup;
 			children = (
 				8B7AE6B4194D0E7900BFBFC8 /* JanksyTests.m */,
 				8B7AE6AF194D0E7900BFBFC8 /* Supporting Files */,
 			);
-			path = JanksyTests;
+			path = JanskyTests;
 			sourceTree = "<group>";
 		};
 		8B7AE6AF194D0E7900BFBFC8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8B7AE6B0194D0E7900BFBFC8 /* JanksyTests-Info.plist */,
+				8B7AE6B0194D0E7900BFBFC8 /* JanskyTests-Info.plist */,
 				8B7AE6B1194D0E7900BFBFC8 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -245,7 +249,8 @@
 				8B300B44195CDB2300C068B5 /* NSURL+Params.m */,
 			);
 			name = Model;
-			sourceTree = "<group>";
+			path = Jansky;
+			sourceTree = SOURCE_ROOT;
 		};
 		8BC66190195B8E8900D4EF88 /* Settings View */ = {
 			isa = PBXGroup;
@@ -254,14 +259,15 @@
 				8BC66192195B8F1500D4EF88 /* DMCSettingsViewController.m */,
 			);
 			name = "Settings View";
-			sourceTree = "<group>";
+			path = Jansky;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8B7AE682194D0E7900BFBFC8 /* Janksy */ = {
+		8B7AE682194D0E7900BFBFC8 /* Jansky */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8B7AE6B8194D0E7900BFBFC8 /* Build configuration list for PBXNativeTarget "Janksy" */;
+			buildConfigurationList = 8B7AE6B8194D0E7900BFBFC8 /* Build configuration list for PBXNativeTarget "Jansky" */;
 			buildPhases = (
 				AE04E788B5D5429F94344EDD /* Check Pods Manifest.lock */,
 				8B7AE67F194D0E7900BFBFC8 /* Sources */,
@@ -273,14 +279,14 @@
 			);
 			dependencies = (
 			);
-			name = Janksy;
+			name = Jansky;
 			productName = Janksy;
-			productReference = 8B7AE683194D0E7900BFBFC8 /* Janksy.app */;
+			productReference = 8B7AE683194D0E7900BFBFC8 /* Jansky.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8B7AE6A6194D0E7900BFBFC8 /* JanksyTests */ = {
+		8B7AE6A6194D0E7900BFBFC8 /* JanskyTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8B7AE6BB194D0E7900BFBFC8 /* Build configuration list for PBXNativeTarget "JanksyTests" */;
+			buildConfigurationList = 8B7AE6BB194D0E7900BFBFC8 /* Build configuration list for PBXNativeTarget "JanskyTests" */;
 			buildPhases = (
 				8B7AE6A3194D0E7900BFBFC8 /* Sources */,
 				8B7AE6A4194D0E7900BFBFC8 /* Frameworks */,
@@ -291,9 +297,9 @@
 			dependencies = (
 				8B7AE6AD194D0E7900BFBFC8 /* PBXTargetDependency */,
 			);
-			name = JanksyTests;
+			name = JanskyTests;
 			productName = JanksyTests;
-			productReference = 8B7AE6A7194D0E7900BFBFC8 /* JanksyTests.xctest */;
+			productReference = 8B7AE6A7194D0E7900BFBFC8 /* JanskyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -314,7 +320,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8B7AE67E194D0E7900BFBFC8 /* Build configuration list for PBXProject "Janksy" */;
+			buildConfigurationList = 8B7AE67E194D0E7900BFBFC8 /* Build configuration list for PBXProject "Jansky" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -327,8 +333,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8B7AE682194D0E7900BFBFC8 /* Janksy */,
-				8B7AE6A6194D0E7900BFBFC8 /* JanksyTests */,
+				8B7AE682194D0E7900BFBFC8 /* Jansky */,
+				8B7AE6A6194D0E7900BFBFC8 /* JanskyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -421,7 +427,7 @@
 /* Begin PBXTargetDependency section */
 		8B7AE6AD194D0E7900BFBFC8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8B7AE682194D0E7900BFBFC8 /* Janksy */;
+			target = 8B7AE682194D0E7900BFBFC8 /* Jansky */;
 			targetProxy = 8B7AE6AC194D0E7900BFBFC8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -441,7 +447,8 @@
 				8B7AE699194D0E7900BFBFC8 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
+			path = Jansky;
+			sourceTree = SOURCE_ROOT;
 		};
 		8B7AE6B1194D0E7900BFBFC8 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -533,15 +540,15 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Janksy/Janksy-Prefix.pch";
-				INFOPLIST_FILE = "Janksy/Janksy-Info.plist";
+				GCC_PREFIX_HEADER = "Jansky/Jansky-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Jansky/Jansky-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9DCDC43F-C852-4614-B5E5-8EE1BB1B248C";
+				PROVISIONING_PROFILE = "17C2AC4E-5A6A-442A-BEBB-92436008B5A0";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -555,15 +562,15 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Janksy/Janksy-Prefix.pch";
-				INFOPLIST_FILE = "Janksy/Janksy-Info.plist";
+				GCC_PREFIX_HEADER = "Jansky/Jansky-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Jansky/Jansky-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9DCDC43F-C852-4614-B5E5-8EE1BB1B248C";
+				PROVISIONING_PROFILE = "17C2AC4E-5A6A-442A-BEBB-92436008B5A0";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -571,19 +578,19 @@
 		8B7AE6BC194D0E7900BFBFC8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Janksy.app/Janksy";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Jansky.app/Jansky";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Janksy/Janksy-Prefix.pch";
+				GCC_PREFIX_HEADER = "Jansky/Jansky-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "JanksyTests/JanksyTests-Info.plist";
+				INFOPLIST_FILE = "JanskyTests/JanskyTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -593,15 +600,15 @@
 		8B7AE6BD194D0E7900BFBFC8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Janksy.app/Janksy";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Jansky.app/Jansky";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Janksy/Janksy-Prefix.pch";
-				INFOPLIST_FILE = "JanksyTests/JanksyTests-Info.plist";
+				GCC_PREFIX_HEADER = "Jansky/Jansky-Prefix.pch";
+				INFOPLIST_FILE = "JanskyTests/JanskyTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -611,7 +618,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8B7AE67E194D0E7900BFBFC8 /* Build configuration list for PBXProject "Janksy" */ = {
+		8B7AE67E194D0E7900BFBFC8 /* Build configuration list for PBXProject "Jansky" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8B7AE6B6194D0E7900BFBFC8 /* Debug */,
@@ -620,7 +627,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8B7AE6B8194D0E7900BFBFC8 /* Build configuration list for PBXNativeTarget "Janksy" */ = {
+		8B7AE6B8194D0E7900BFBFC8 /* Build configuration list for PBXNativeTarget "Jansky" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8B7AE6B9194D0E7900BFBFC8 /* Debug */,
@@ -629,7 +636,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8B7AE6BB194D0E7900BFBFC8 /* Build configuration list for PBXNativeTarget "JanksyTests" */ = {
+		8B7AE6BB194D0E7900BFBFC8 /* Build configuration list for PBXNativeTarget "JanskyTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8B7AE6BC194D0E7900BFBFC8 /* Debug */,
