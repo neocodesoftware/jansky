@@ -10,4 +10,8 @@
 
 @implementation UINavigationController (Rotation)
 
+-(NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+}
+
 @end

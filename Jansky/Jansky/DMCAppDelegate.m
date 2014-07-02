@@ -16,6 +16,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    DMCScanController *scanController = [DMCScanController instance];
+    [scanController setup];
     return YES;
 }
 							
@@ -23,6 +25,9 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
+    DMCScanController *scanController = [DMCScanController instance];
+    [scanController teardown];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -38,6 +43,9 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    
+    DMCScanController *scanController = [DMCScanController instance];
+    [scanController setup];
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
@@ -48,25 +56,28 @@
 
 // rfid://scan?callback=fmp%3A//%24/filename%3Fscript%3DScan%26param%3DEAN
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
     DMCSession *session = [[DMCSession alloc] init];
     session.originalCall = url;
     DMCScanController *scanController = [DMCScanController instance];
     scanController.session = session;
     
-    [self handleSimulation];
-    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"simulationMode"]) {
+        [self handleSimulation];
+    }
+    // scanning start is handled by DMCScanController's adcReceived method.
     return YES;
 }
 
 -(void)handleSimulation {
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"simulationMode"]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Simulation Mode" message:@"Enter a code, it will be returned to the calling app using the url callback provided." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Done", nil];
-        alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-        [alert show];
-    } // else ignore
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Simulation Mode" message:@"Enter a code, it will be returned to the calling app using the url callback provided." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Done", nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alert show];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    DMCScanController *scanner = [DMCScanController instance];
+    
     if (buttonIndex != [alertView cancelButtonIndex]) {
         // behave as though the text input was scanned.
         UITextField *inputField = [alertView textFieldAtIndex:0];
@@ -74,8 +85,9 @@
         DMCScan *scan = [[DMCScan alloc] init];
         scan.string = inputField.text;
         scan.scanDate = [NSDate date];
-        DMCScanController *scanner = [DMCScanController instance];
         [scanner handleScan:scan];
+    } else {
+        scanner.session = nil;
     }
 }
 
@@ -83,6 +95,10 @@
     UITextField *inputField = [alertView textFieldAtIndex:0];
     
     return [[inputField text] length] > 0;
+}
+
+-(NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
 }
 
 @end

@@ -20,20 +20,17 @@
 
 @implementation DMCMasterViewController
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [super awakeFromNib];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
     DMCScanController *scanner = [DMCScanController instance];
-    [scanner setup];
-    [scanner start];
+    scanner.delegate = self;
     
     /*if (!scanner.session) {
         // add a fake session for testing.
@@ -82,6 +79,7 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
+
 
 #pragma mark - Table View
 
@@ -153,25 +151,52 @@
 #pragma mark - Button Actions
 
 -(IBAction)cancelButtonAction:(id)sender {
-    UIBarButtonItem *scanButton = [[UIBarButtonItem alloc] initWithTitle:@"Scan" style:UIBarButtonItemStylePlain target:self action:@selector(scanButtonAction:)];
-    
-    NSUInteger index = [self.toolbarItems indexOfObject:sender];
-    NSMutableArray *toolbarItems = [self.toolbarItems mutableCopy];
-    [toolbarItems replaceObjectAtIndex:index withObject:scanButton];
-    
-    [self setToolbarItems:toolbarItems animated:YES];
-    self.scanCancelButton = scanButton;
+    [[DMCScanController instance] stop];
 }
 
 -(IBAction)scanButtonAction:(id)sender {
-    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonAction:)];
+    [[DMCScanController instance] start];
+}
+
+#pragma mark - Scan Start Stop
+
+
+-(void)beginScanning {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self updateScanCancelButton:YES];
+    });
+}
+
+-(void)endScanning {
+    [DMCScanController instance].session = nil; // clear session.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self updateScanCancelButton:NO];
+    });
+}
+
+-(void)updateScanCancelButton:(BOOL)scanning {
+    if (self.scanCancelButton.action == @selector(cancelButtonAction:) && scanning == YES) return;
+    if (self.scanCancelButton.action == @selector(scanButtonAction:) && scanning == NO) return;
     
-    NSUInteger index = [self.toolbarItems indexOfObject:sender];
-    NSMutableArray *toolbarItems = [self.toolbarItems mutableCopy];
-    [toolbarItems replaceObjectAtIndex:index withObject:cancelButton];
-    
-    [self setToolbarItems:toolbarItems animated:YES];
-    self.scanCancelButton = cancelButton;
+    if (scanning) {
+        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonAction:)];
+        
+        NSUInteger index = [self.toolbarItems indexOfObject:self.scanCancelButton];
+        NSMutableArray *toolbarItems = [self.toolbarItems mutableCopy];
+        [toolbarItems replaceObjectAtIndex:index withObject:cancelButton];
+        
+        [self setToolbarItems:toolbarItems animated:YES];
+        self.scanCancelButton = cancelButton;
+    } else {
+        UIBarButtonItem *scanButton = [[UIBarButtonItem alloc] initWithTitle:@"Scan" style:UIBarButtonItemStylePlain target:self action:@selector(scanButtonAction:)];
+        
+        NSUInteger index = [self.toolbarItems indexOfObject:self.scanCancelButton];
+        NSMutableArray *toolbarItems = [self.toolbarItems mutableCopy];
+        [toolbarItems replaceObjectAtIndex:index withObject:scanButton];
+        
+        [self setToolbarItems:toolbarItems animated:YES];
+        self.scanCancelButton = scanButton;
+    }
 }
 
 @end

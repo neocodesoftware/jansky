@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class DMCScanController;
+#import "DMCScanController.h"
 
 @interface DMCMasterViewController : UITableViewController
 

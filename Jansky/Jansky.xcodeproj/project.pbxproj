@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8B1ECC17194D47E800B26A34 /* DMCSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1ECC16194D47E800B26A34 /* DMCSession.m */; };
 		8B1ECC18194D47E800B26A34 /* DMCSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B1ECC16194D47E800B26A34 /* DMCSession.m */; };
+		8B2B9B9B1964C91B00BA8B6F /* UINavigationController+Rotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B2B9B9A1964C91B00BA8B6F /* UINavigationController+Rotation.m */; };
 		8B300B45195CDB2300C068B5 /* NSURL+Params.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B300B44195CDB2300C068B5 /* NSURL+Params.m */; };
 		8B483448195A4B7000E09BA8 /* A100_IL1001-21_iPhoneLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B483447195A4B7000E09BA8 /* A100_IL1001-21_iPhoneLibrary.a */; };
 		8B48344E195A4C5A00E09BA8 /* DMCScanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B48344D195A4C5A00E09BA8 /* DMCScanController.m */; };
@@ -53,6 +54,8 @@
 		857F20A073B047ABAA0A6D84 /* Pods-Janksy.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Janksy.xcconfig"; path = "Pods/Pods-Janksy.xcconfig"; sourceTree = "<group>"; };
 		8B1ECC15194D47E800B26A34 /* DMCSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMCSession.h; sourceTree = "<group>"; };
 		8B1ECC16194D47E800B26A34 /* DMCSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMCSession.m; sourceTree = "<group>"; };
+		8B2B9B991964C91B00BA8B6F /* UINavigationController+Rotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+Rotation.h"; path = "Jansky/UINavigationController+Rotation.h"; sourceTree = SOURCE_ROOT; };
+		8B2B9B9A1964C91B00BA8B6F /* UINavigationController+Rotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+Rotation.m"; path = "Jansky/UINavigationController+Rotation.m"; sourceTree = SOURCE_ROOT; };
 		8B300B43195CDB2300C068B5 /* NSURL+Params.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSURL+Params.h"; path = "Jansky/NSURL+Params.h"; sourceTree = SOURCE_ROOT; };
 		8B300B44195CDB2300C068B5 /* NSURL+Params.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSURL+Params.m"; path = "Jansky/NSURL+Params.m"; sourceTree = SOURCE_ROOT; };
 		8B483447195A4B7000E09BA8 /* A100_IL1001-21_iPhoneLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "A100_IL1001-21_iPhoneLibrary.a"; sourceTree = "<group>"; };
@@ -195,6 +198,8 @@
 				8B7AE695194D0E7900BFBFC8 /* DMCAppDelegate.h */,
 				8B7AE696194D0E7900BFBFC8 /* DMCAppDelegate.m */,
 				8B7AE698194D0E7900BFBFC8 /* Main.storyboard */,
+				8B2B9B991964C91B00BA8B6F /* UINavigationController+Rotation.h */,
+				8B2B9B9A1964C91B00BA8B6F /* UINavigationController+Rotation.m */,
 				8B1ECC13194D3D0D00B26A34 /* Master View */,
 				8BC66190195B8E8900D4EF88 /* Settings View */,
 				8B7AE6BE194D0F0A00BFBFC8 /* Model */,
@@ -400,6 +405,7 @@
 			files = (
 				8BC66193195B8F1500D4EF88 /* DMCSettingsViewController.m in Sources */,
 				8B7AE693194D0E7900BFBFC8 /* main.m in Sources */,
+				8B2B9B9B1964C91B00BA8B6F /* UINavigationController+Rotation.m in Sources */,
 				8B7AE69D194D0E7900BFBFC8 /* DMCMasterViewController.m in Sources */,
 				8B7AE6A0194D0E7900BFBFC8 /* DMCDetailViewController.m in Sources */,
 				8B300B45195CDB2300C068B5 /* NSURL+Params.m in Sources */,
@@ -548,7 +554,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "17C2AC4E-5A6A-442A-BEBB-92436008B5A0";
+				PROVISIONING_PROFILE = "AD914D08-13AE-4C14-9673-F3B3DB69EC4A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -570,7 +576,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "17C2AC4E-5A6A-442A-BEBB-92436008B5A0";
+				PROVISIONING_PROFILE = "AD914D08-13AE-4C14-9673-F3B3DB69EC4A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

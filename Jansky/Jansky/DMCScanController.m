@@ -45,7 +45,7 @@
 }
 
 -(void)appWillEnterForeground:(NSNotification *)notification {
-    [self start];
+    //[self start];
 }
 
 -(void)setup {
@@ -74,6 +74,7 @@
                                               withObject:permissionBlock];
     }
     
+    [self.rcp open];
 }
 
 
@@ -84,7 +85,7 @@
         _rcp = [[RcpApi alloc] init];
         _rcp.delegate = self;
         __weak RcpApi *pRcp = _rcp;
-        //__weak DMCScanController * pSelf = self;
+        __weak DMCScanController * pSelf = self;
         
         callCenter = [[CTCallCenter alloc] init];
         callCenter.callEventHandler = ^(CTCall *call) {
@@ -102,6 +103,7 @@
                                ^{
                                    NSLog(@"Scan interupted by cell");
                                    // looks like reset the app to not scanning?
+                                   [pSelf.delegate endScanning];
                                    //[pSelf displayClose];
                                    //[pSelf.olSwitch setOn:NO];
                                });
@@ -115,28 +117,45 @@
 
 - (void)start {
     NSLog(@"Starting scanning");
+    
+    RcpApi *rcp = [self rcp];
 	
-    if(![self.rcp isOpened]) {
-        [self.rcp open];
+    if(![rcp isOpened]) {
+        [rcp open];
     }
     
-    if (![self.rcp isOpened]) return;
+    if (![self.rcp isOpened]) {
+        NSLog(@"RCP isn't open yet, sleeping");
+        return;
+    }
     
-    //int stopTagCount = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"stopTagCount"];
-    //int stopTime = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"stopTime"];
-    //int stopCycle = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"stopCycle"];
-    //BOOL rssiOn = [[NSUserDefaults standardUserDefaults] boolForKey:@"tagRssi"];
-    
-    int stopTagCount = 1;
+    int stopTagCount = (self.session ? 1 : 0); // if there is a session, cancel after 1, otherwise infinite.
     int stopTime = 0;
     int stopCycle = 0;
     BOOL rssiOn = NO;
     
-    if(!rssiOn) {
-        [self.rcp startReadTags:stopTagCount mtime:stopTime repeatCycle:stopCycle];
-    } else {
-        [self.rcp startReadTagsWithRssi:stopTagCount mtime:stopTime repeatCycle:stopCycle];
+    if (self.plugged) {
+        if(!rssiOn) {
+            [rcp startReadTags:stopTagCount mtime:stopTime repeatCycle:stopCycle];
+        } else {
+            [rcp startReadTagsWithRssi:stopTagCount mtime:stopTime repeatCycle:stopCycle];
+        }
     }
+    
+    [self.delegate beginScanning];
+}
+
+-(void)stop {
+    [self.rcp stopReadTags];
+    
+    [self.delegate endScanning];
+}
+
+-(void)teardown {
+    [self.rcp stopReadTags];
+    self.session = nil;
+    [self.rcp close];
+    [self.delegate endScanning];
 }
 
 - (IBAction)muteSwitch:(UISwitch *)sender {
@@ -169,6 +188,9 @@
     [self.collection addScan:scan];
     if (self.session) {
         NSURL *url = [self.session callbackUrlWithScan:scan];
+        
+        [self.delegate endScanning];
+        
         if (url) {
             NSLog(@"Opening url %@", url);
             [[UIApplication sharedApplication] openURL:url];
@@ -176,8 +198,24 @@
             NSLog(@"error, invalid callback url");
         }
         self.session = nil;
+        [self.rcp stopReadTags];
     }
     
+}
+
+
+#pragma mark - Check if plugged
+
+- (BOOL)isHeadsetPluggedIn
+{
+    AVAudioSessionRouteDescription *route = [[AVAudioSession sharedInstance] currentRoute];
+    
+    BOOL headphonesLocated = NO;
+    for( AVAudioSessionPortDescription *portDescription in route.outputs )
+    {
+        headphonesLocated |= ( [portDescription.portType isEqualToString:AVAudioSessionPortHeadphones] );
+    }
+    return headphonesLocated;
 }
 
 #pragma mark - RcpDelegate
@@ -188,7 +226,6 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"StatusChanged" object:nil];
     
     NSLog(@"plug change: %@", (plug ? @"Plugged" : @"Unplugged"));
-    [self start];
 }
 
 - (void)pcEpcReceived:(NSData *)pcEpc {
@@ -275,7 +312,10 @@
 
 - (void)adcReceived:(NSData*)data {
     NSLog(@"adcReceived: %@", data);
-    [self start];
+    if (self.session && ![self.session started]) {
+        self.session.started = YES;
+        [self start];
+    }
 }
 
 - (void)genericReceived:(NSData*)data {

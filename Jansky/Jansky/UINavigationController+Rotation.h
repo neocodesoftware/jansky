@@ -10,4 +10,6 @@
 
 @interface UINavigationController (Rotation)
 
+-(NSUInteger)supportedInterfaceOrientations;
+
 @end

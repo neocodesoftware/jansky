@@ -75,9 +75,9 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="Jdn-d4-G5u"/>
-                        <barButtonItem enabled="NO" title="Cancel" id="VVZ-RK-W5k">
+                        <barButtonItem title="Scan" id="VVZ-RK-W5k">
                             <connections>
-                                <action selector="cancelButtonAction:" destination="pGg-6v-bdr" id="YIJ-7H-FqM"/>
+                                <action selector="scanButtonAction:" destination="pGg-6v-bdr" id="S7y-rD-LYH"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="6eh-aV-RZ4"/>

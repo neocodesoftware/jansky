@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSURL *originalCall;
 @property (readonly) BOOL simulationMode;
 @property (readonly) NSString *callback;
+@property (readwrite) BOOL started;
 
 -(NSURL *)callbackUrlWithScan:(DMCScan *)scan; // generate a callback url using the scan.
 
