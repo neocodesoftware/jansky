@@ -124,6 +124,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B12D9371964D13E00CF0C98 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				8B300B43195CDB2300C068B5 /* NSURL+Params.h */,
+				8B300B44195CDB2300C068B5 /* NSURL+Params.m */,
+				8B2B9B991964C91B00BA8B6F /* UINavigationController+Rotation.h */,
+				8B2B9B9A1964C91B00BA8B6F /* UINavigationController+Rotation.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		8B1ECC13194D3D0D00B26A34 /* Master View */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,11 +209,10 @@
 				8B7AE695194D0E7900BFBFC8 /* DMCAppDelegate.h */,
 				8B7AE696194D0E7900BFBFC8 /* DMCAppDelegate.m */,
 				8B7AE698194D0E7900BFBFC8 /* Main.storyboard */,
-				8B2B9B991964C91B00BA8B6F /* UINavigationController+Rotation.h */,
-				8B2B9B9A1964C91B00BA8B6F /* UINavigationController+Rotation.m */,
 				8B1ECC13194D3D0D00B26A34 /* Master View */,
 				8BC66190195B8E8900D4EF88 /* Settings View */,
 				8B7AE6BE194D0F0A00BFBFC8 /* Model */,
+				8B12D9371964D13E00CF0C98 /* Categories */,
 				8B7AE69E194D0E7900BFBFC8 /* DMCDetailViewController.h */,
 				8B7AE69F194D0E7900BFBFC8 /* DMCDetailViewController.m */,
 				8B7AE6A1194D0E7900BFBFC8 /* Images.xcassets */,
@@ -250,8 +260,6 @@
 				8B7AE6C0194D0F3000BFBFC8 /* DMCScanCollection.m */,
 				8B7AE6C3194D0F3C00BFBFC8 /* DMCScan.h */,
 				8B7AE6C4194D0F3C00BFBFC8 /* DMCScan.m */,
-				8B300B43195CDB2300C068B5 /* NSURL+Params.h */,
-				8B300B44195CDB2300C068B5 /* NSURL+Params.m */,
 			);
 			name = Model;
 			path = Jansky;
@@ -554,7 +562,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "AD914D08-13AE-4C14-9673-F3B3DB69EC4A";
+				PROVISIONING_PROFILE = "29FE5AC8-7028-4794-A770-6D21107613A2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -576,7 +584,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "AD914D08-13AE-4C14-9673-F3B3DB69EC4A";
+				PROVISIONING_PROFILE = "29FE5AC8-7028-4794-A770-6D21107613A2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
