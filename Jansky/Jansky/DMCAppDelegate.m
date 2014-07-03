@@ -16,8 +16,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    DMCScanController *scanController = [DMCScanController instance];
-    [scanController setup];
     return YES;
 }
 							
