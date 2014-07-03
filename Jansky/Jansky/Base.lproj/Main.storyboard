@@ -108,20 +108,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07A-uz-WXd">
-                                <rect key="frame" x="20" y="143" width="280" height="381"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07A-uz-WXd">
+                                <rect key="frame" x="20" y="84" width="280" height="440"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">To buy hardware and software visit:
+                                <string key="text">RFID+ is a product of Neo Code Software
+
+In order to scan RFID tags, a hardware accessory is required. The app can be used in "Simulation Mode" without hardware.
+
+To buy hardware and software visit:
 
 https://store.neocodesoftware.com/products/RFID.html
 
-For support email:
+For support, contact:
 support@neocodesoftware.com
 
+This app is built using the following open source libraries:
+
+- DateTools by Matthew York
+- MKStoreKit by Mugunth Kumar
 </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NeoCodeLogo" translatesAutoresizingMaskIntoConstraints="NO" id="FGT-Kj-8ux">
@@ -136,7 +144,7 @@ support@neocodesoftware.com
                         <constraints>
                             <constraint firstItem="lQI-Z9-4IG" firstAttribute="top" secondItem="07A-uz-WXd" secondAttribute="bottom" id="Q75-Bn-0WN"/>
                             <constraint firstItem="FGT-Kj-8ux" firstAttribute="leading" secondItem="MnK-n7-GWs" secondAttribute="leading" constant="20" id="YFQ-d0-dBa"/>
-                            <constraint firstItem="07A-uz-WXd" firstAttribute="top" secondItem="FGT-Kj-8ux" secondAttribute="bottom" constant="8" id="gOq-3b-dFv"/>
+                            <constraint firstItem="07A-uz-WXd" firstAttribute="top" secondItem="FGT-Kj-8ux" secondAttribute="bottom" constant="-51" id="gOq-3b-dFv"/>
                             <constraint firstAttribute="trailing" secondItem="FGT-Kj-8ux" secondAttribute="trailing" constant="20" id="gaw-UD-qbv"/>
                             <constraint firstItem="FGT-Kj-8ux" firstAttribute="leading" secondItem="07A-uz-WXd" secondAttribute="leading" id="iAp-1b-SEU"/>
                             <constraint firstItem="FGT-Kj-8ux" firstAttribute="top" secondItem="WJm-Sg-2Hf" secondAttribute="bottom" constant="20" id="ouc-5c-Xij"/>
@@ -161,7 +169,7 @@ support@neocodesoftware.com
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Lei-5M-9Gs">
+                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" lineBreakMode="characterWrap" numberOfLines="0" minimumFontSize="10" preferredMaxLayoutWidth="260" translatesAutoresizingMaskIntoConstraints="NO" id="Lei-5M-9Gs">
                                 <rect key="frame" x="40" y="114" width="260" height="21"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -220,7 +228,7 @@ support@neocodesoftware.com
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="cra-N8-TIN"/>
+                    <navigationItem key="navigationItem" title="RFID Details" id="cra-N8-TIN"/>
                     <connections>
                         <outlet property="detailCountLabel" destination="vFa-6n-SXe" id="AZP-69-5wb"/>
                         <outlet property="detailDateLabel" destination="Vy6-i9-QC4" id="XfG-pU-zvW"/>
@@ -309,7 +317,7 @@ support@neocodesoftware.com
         </scene>
     </scenes>
     <resources>
-        <image name="NeoCodeLogo" width="1100" height="100"/>
+        <image name="NeoCodeLogo" width="280" height="26"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
