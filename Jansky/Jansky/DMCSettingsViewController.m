@@ -40,6 +40,7 @@
     
     self.observer = [nc addObserverForName:@"StatusChanged" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note){
         [weakSelf updateStatus];
+        [weakSelf updateSimulation];
     }];
     
 }
@@ -70,7 +71,7 @@
 }
 
 -(void)updateSimulation {
-    BOOL sim = [[NSUserDefaults standardUserDefaults] boolForKey:@"simulationMode"];
+    BOOL sim = [[NSUserDefaults standardUserDefaults] boolForKey:@"SimulationMode"];
     [self.simulationSwitch setOn:sim animated:YES];
 }
 
@@ -87,7 +88,14 @@
 
 -(IBAction)simulationSwitchAction:(id)sender {
     NSLog(@"Simulation mode switch");
-    [[NSUserDefaults standardUserDefaults] setBool:self.simulationSwitch.on forKey:@"simulationMode"];
+    [[NSUserDefaults standardUserDefaults] setBool:self.simulationSwitch.on forKey:@"SimulationMode"];
+    
+    DMCScanController *scanner = [DMCScanController instance];
+    if (self.simulationSwitch.on) {
+        [scanner teardown];
+    } else {
+        [scanner setup];
+    }
 }
 
 @end

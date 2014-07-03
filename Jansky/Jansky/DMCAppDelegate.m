@@ -60,7 +60,7 @@
     DMCScanController *scanController = [DMCScanController instance];
     scanController.session = session;
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"simulationMode"]) {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimulationMode"]) {
         [self handleSimulation];
     }
     // scanning start is handled by DMCScanController's adcReceived method.
