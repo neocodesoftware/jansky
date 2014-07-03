@@ -19,21 +19,6 @@
     CTCallCenter *callCenter;
 }
 
--(instancetype)init {
-    if ((self = [super init])) {
-        [[NSNotificationCenter defaultCenter]
-         addObserver:self
-         selector:@selector(appWillEnterForeground:)
-         name:UIApplicationWillEnterForegroundNotification
-         object:nil];
-    }
-    return self;
-}
-
--(void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 +(instancetype)instance {
     static DMCScanController *instance = nil;
     static dispatch_once_t onceToken;
@@ -44,12 +29,11 @@
     return instance;
 }
 
--(void)appWillEnterForeground:(NSNotification *)notification {
-    //[self start];
-}
-
 -(void)setup {
-    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimulationMode"]) {
+        NSLog(@"Simulation mode, skipping hardware setup");
+        return;
+    }
     // check for mic permission
 #ifndef __IPHONE_7_0
     typedef void (^PermissionBlock)(BOOL granted);
@@ -57,7 +41,30 @@
     
     PermissionBlock permissionBlock = ^(BOOL granted) {
         if (granted) {
+            AVAudioSession *audioSession = [AVAudioSession sharedInstance];
             
+            if ([self isHeadsetPluggedIn]) {
+                if(audioSession && [audioSession outputVolume] != 1.0) {
+                    UIAlertView *alert = [[UIAlertView alloc]
+                                          initWithTitle:@"Error"
+                                          message:@"Turn the volume up to the maximum setting. Full volume is required to correctly communicate with the Arete Pop RFID scanner."
+                                          delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+                    [alert show];
+                }
+                
+                [self.rcp open];
+            } else {
+                UIAlertView *alert = [[UIAlertView alloc]
+                                      initWithTitle:@"Hardware Missing"
+                                      message:@"Please connect your Arete Pop RFID Scanner, and press \"Connect\" to begin scanning RFIDs."
+                                      delegate:self
+                                      cancelButtonTitle:@"Connect"
+                                      otherButtonTitles:@"Buy Hardware",@"Enable Simulation Mode", nil];
+                [alert show];
+            }
+                
         } else {
             NSString *message = @"Microphone input permission refused. Go to iOS settings to enable permission.";
             NSString *title = @"Hardware Error";
@@ -73,8 +80,16 @@
         [[AVAudioSession sharedInstance] performSelector:@selector(requestRecordPermission:)
                                               withObject:permissionBlock];
     }
-    
-    [self.rcp open];
+}
+
+
+- (BOOL)isHeadsetPluggedIn {
+    AVAudioSessionRouteDescription* route = [[AVAudioSession sharedInstance] currentRoute];
+    for (AVAudioSessionPortDescription* desc in [route outputs]) {
+        if ([[desc portType] isEqualToString:AVAudioSessionPortHeadphones])
+            return YES;
+    }
+    return NO;
 }
 
 
@@ -121,6 +136,7 @@
     RcpApi *rcp = [self rcp];
 	
     if(![rcp isOpened]) {
+        NSLog(@"Opening from the SART method");
         [rcp open];
     }
     
@@ -154,34 +170,9 @@
 -(void)teardown {
     [self.rcp stopReadTags];
     self.session = nil;
+    NSLog(@"Resetting session");
     [self.rcp close];
     [self.delegate endScanning];
-}
-
-- (IBAction)muteSwitch:(UISwitch *)sender {
-    if([sender isOn]) {
-        NSLog(@"On\n");
-        
-        if([self.rcp open]) {
-            //self.olBtnRead.enabled = YES;
-            //self.olBtnClear.enabled = YES;
-            //self.olBtnStop.enabled = YES;
-        }
-        //self.olBtnSettings.enabled = YES;
-        
-        if(1.0 != [[AVAudioSession sharedInstance] outputVolume]) {
-            UIAlertView *alert = [[UIAlertView alloc]
-                                  initWithTitle:@"Error"
-                                  message:@"Set the maximum volume."
-                                  delegate:nil
-                                  cancelButtonTitle:@"OK"
-                                  otherButtonTitles:nil];
-            [alert show];
-        }
-    } else {
-        [self.rcp close];
-        //[self displayClose];
-    }
 }
 
 -(void)handleScan:(DMCScan *)scan { // called by RcpDelegate method below, and by DMCAppDelegate when in simulation mode
@@ -198,24 +189,25 @@
             NSLog(@"error, invalid callback url");
         }
         self.session = nil;
+        NSLog(@"Resetting session");
         [self.rcp stopReadTags];
     }
     
 }
 
+#pragma mark - No hardware dialog callback
 
-#pragma mark - Check if plugged
-
-- (BOOL)isHeadsetPluggedIn
-{
-    AVAudioSessionRouteDescription *route = [[AVAudioSession sharedInstance] currentRoute];
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if ([alertView cancelButtonIndex] == buttonIndex) [self setup];
     
-    BOOL headphonesLocated = NO;
-    for( AVAudioSessionPortDescription *portDescription in route.outputs )
-    {
-        headphonesLocated |= ( [portDescription.portType isEqualToString:AVAudioSessionPortHeadphones] );
+    if (buttonIndex == 1) { // buy hardware
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://store.neocodesoftware.com/products/RFID.html"]];
+    } else if (buttonIndex == 2) { // simulation mode
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"SimulationMode"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"StatusChanged" object:nil];
     }
-    return headphonesLocated;
 }
 
 #pragma mark - RcpDelegate
@@ -226,6 +218,10 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"StatusChanged" object:nil];
     
     NSLog(@"plug change: %@", (plug ? @"Plugged" : @"Unplugged"));
+    
+    if (!plug) {
+        self.session.started = NO;
+    }
 }
 
 - (void)pcEpcReceived:(NSData *)pcEpc {
