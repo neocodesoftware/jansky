@@ -155,8 +155,37 @@
 }
 
 -(IBAction)scanButtonAction:(id)sender {
-    [[DMCScanController instance] start];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimulationMode"]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Simulation Mode" message:@"Enter a code, it will be interpreted as an RFID within the app." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Done", nil];
+        alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+        [alert show];
+    } else {
+        [[DMCScanController instance] start];
+    }
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    DMCScanController *scanner = [DMCScanController instance];
+    
+    if (buttonIndex != [alertView cancelButtonIndex]) {
+        // behave as though the text input was scanned.
+        UITextField *inputField = [alertView textFieldAtIndex:0];
+        
+        DMCScan *scan = [[DMCScan alloc] init];
+        scan.string = inputField.text;
+        scan.scanDate = [NSDate date];
+        [scanner handleScan:scan];
+    } else {
+        scanner.session = nil;
+    }
+}
+
+- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView {
+    UITextField *inputField = [alertView textFieldAtIndex:0];
+    
+    return [[inputField text] length] > 0;
+}
+
 
 #pragma mark - Scan Start Stop
 
