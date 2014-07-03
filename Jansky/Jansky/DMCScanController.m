@@ -55,6 +55,7 @@
                 }
                 
                 [self.rcp open];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"StatusChanged" object:nil];
             } else {
                 UIAlertView *alert = [[UIAlertView alloc]
                                       initWithTitle:@"Hardware Missing"
