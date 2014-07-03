@@ -17,7 +17,7 @@
     NSDictionary *params = [self.originalCall params];
     NSString *callback = [params objectForKey:@"callback"];
     
-    NSLog(@"Callback is %@", callback);
+    //NSLog(@"Callback is %@", callback);
     
     NSString *decoded = (__bridge NSString*)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(NULL, (CFStringRef)callback, CFSTR(""), kCFStringEncodingUTF8);
     

@@ -10,6 +10,7 @@
 
 #import "DMCScanController.h"
 #import "RcpApi.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface DMCSettingsViewController ()
 
@@ -56,13 +57,24 @@
 -(void)updateStatus {
     DMCScanController *scanController = [DMCScanController instance];
     
-    if (![scanController.rcp isOpened]) {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimulationMode"]) {
+        self.statusLabel.text = @"Simulation Mode";
+        self.statusLabel.textColor = [UIColor orangeColor];
+    } else if (![scanController.rcp isOpened]) {
         self.statusLabel.text = @"Reader unreachable";
         self.statusLabel.textColor = [UIColor redColor];
     } else {
         if ([scanController plugged]) {
-            self.statusLabel.text = @"Good";
-            self.statusLabel.textColor = [UIColor greenColor];
+            AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+            if(audioSession && [audioSession outputVolume] == 1.0) {
+                self.statusLabel.text = @"Good";
+                self.statusLabel.textColor = [UIColor greenColor];
+            } else {
+                self.statusLabel.text = [NSString stringWithFormat:@"Volume low (%i%%)", (int)([audioSession outputVolume] * 100)];
+                self.statusLabel.textColor = [UIColor orangeColor];
+            }
+                    
+            
         } else {
             self.statusLabel.text = @"Unplugged";
             self.statusLabel.textColor = [UIColor orangeColor];
@@ -87,7 +99,7 @@
 
 
 -(IBAction)simulationSwitchAction:(id)sender {
-    NSLog(@"Simulation mode switch");
+    //NSLog(@"Simulation mode switch");
     [[NSUserDefaults standardUserDefaults] setBool:self.simulationSwitch.on forKey:@"SimulationMode"];
     
     DMCScanController *scanner = [DMCScanController instance];
@@ -96,6 +108,8 @@
     } else {
         [scanner setup];
     }
+    
+    [self updateStatus];
 }
 
 @end
