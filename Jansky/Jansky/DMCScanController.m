@@ -31,7 +31,7 @@
 
 -(void)setup {
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"SimulationMode"]) {
-        NSLog(@"Simulation mode, skipping hardware setup");
+        //NSLog(@"Simulation mode, skipping hardware setup");
         return;
     }
     // check for mic permission
@@ -46,8 +46,8 @@
             if ([self isHeadsetPluggedIn]) {
                 if(audioSession && [audioSession outputVolume] != 1.0) {
                     UIAlertView *alert = [[UIAlertView alloc]
-                                          initWithTitle:@"Error"
-                                          message:@"Turn the volume up to the maximum setting. Full volume is required to correctly communicate with the Arete Pop RFID scanner."
+                                          initWithTitle:@"Turn up the Volume"
+                                          message:@"Full volume is required to correctly communicate with the Arete Pop RFID scanner. Please turn up the volume using the buttons on the side of your device."
                                           delegate:nil
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
@@ -104,7 +104,7 @@
         
         callCenter = [[CTCallCenter alloc] init];
         callCenter.callEventHandler = ^(CTCall *call) {
-            NSLog(@"call.callState = %@", call.callState);
+            //NSLog(@"call.callState = %@", call.callState);
             
             if((call.callState == CTCallStateIncoming)
                || (call.callState == CTCallStateDialing)
@@ -131,12 +131,12 @@
 }
 
 - (void)start {
-    NSLog(@"Starting scanning");
+    //NSLog(@"Starting scanning");
     
     RcpApi *rcp = [self rcp];
 	
     if(![rcp isOpened]) {
-        NSLog(@"Opening from the SART method");
+        NSLog(@"Opening from the START method");
         [rcp open];
     }
     
@@ -170,7 +170,7 @@
 -(void)teardown {
     [self.rcp stopReadTags];
     self.session = nil;
-    NSLog(@"Resetting session");
+    //NSLog(@"Resetting session");
     [self.rcp close];
     [self.delegate endScanning];
 }
@@ -182,14 +182,16 @@
         
         [self.delegate endScanning];
         
-        if (url) {
+        if (url && [[UIApplication sharedApplication] canOpenURL:url]) {
             NSLog(@"Opening url %@", url);
             [[UIApplication sharedApplication] openURL:url];
         } else {
-            NSLog(@"error, invalid callback url");
+            NSString *message = [NSString stringWithFormat:@"The callback URL:\n\n%@\n\nIs not a valid URL, or the application that responds to it is missing.", url];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid Callback" message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
         }
         self.session = nil;
-        NSLog(@"Resetting session");
+        //NSLog(@"Resetting session");
         [self.rcp stopReadTags];
     }
     
@@ -217,15 +219,16 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"StatusChanged" object:nil];
     
-    NSLog(@"plug change: %@", (plug ? @"Plugged" : @"Unplugged"));
+    //NSLog(@"plug change: %@", (plug ? @"Plugged" : @"Unplugged"));
     
     if (!plug) {
         self.session.started = NO;
+        [self.delegate endScanning];
     }
 }
 
 - (void)pcEpcReceived:(NSData *)pcEpc {
-    NSLog(@"pcEpcReceived: %@", pcEpc);
+    //NSLog(@"pcEpcReceived: %@", pcEpc);
     
     DMCScan *scan = [[DMCScan alloc] init];
     scan.rawPcEpc = pcEpc;
@@ -234,16 +237,27 @@
     [self handleScan:scan];
 }
 
+- (void)adcReceived:(NSData*)data {
+    //NSLog(@"adcReceived: %@", data);
+    if (self.session && ![self.session started]) {
+        self.session.started = YES;
+        [self start];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"StatusChanged" object:nil];
+    }
+}
+
+- (void)ackReceived:(uint8_t)commandCode {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"StatusChanged" object:nil];
+}
+
+
+/*
 - (void)pcEpcRssiReceived:(NSData *)pcEpc rssi:(int8_t)rssi {
     NSLog(@"pcEpcRssiReceived");
 }
 
 - (void)readerConnected {
     NSLog(@"ReaderConnected");
-}
-
-- (void)ackReceived:(uint8_t)commandCode {
-    NSLog(@"ackReceived: %i", commandCode);
 }
 
 - (void)errReceived:(uint8_t)errCode {
@@ -305,18 +319,13 @@
 - (void)registeryItemReceived:(NSData *)item {
     NSLog(@"registeryItemReceived");
 }
+ 
+ - (void)genericReceived:(NSData*)data {
+ NSLog(@"genericReceived");
+ }
 
-- (void)adcReceived:(NSData*)data {
-    NSLog(@"adcReceived: %@", data);
-    if (self.session && ![self.session started]) {
-        self.session.started = YES;
-        [self start];
-    }
-}
+*/
 
-- (void)genericReceived:(NSData*)data {
-    NSLog(@"genericReceived");
-}
 
 
 
