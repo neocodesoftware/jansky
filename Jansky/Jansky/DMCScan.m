@@ -26,7 +26,7 @@
 }
 
 -(NSString *)identifier {
-    
+    NSString *rawString = self.string;
     if (self.rawPcEpc) {
         NSData *data = self.rawPcEpc;
         NSUInteger dataLength = [data length];
@@ -35,11 +35,10 @@
         for (NSInteger idx = 0; idx < dataLength; ++idx) {
             [string appendFormat:@"%02x", dataBytes[idx]];
         }
-        return string;
-    } else {
-        return self.string;
+        rawString = string;
     }
     
+    return [rawString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 }
 
 
