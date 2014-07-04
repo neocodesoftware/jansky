@@ -197,7 +197,7 @@
 }
 
 -(void)endScanning {
-    [DMCScanController instance].session = nil; // clear session.
+    //[DMCScanController instance].session = nil; // clear session.
     dispatch_async(dispatch_get_main_queue(), ^{
         [self updateScanCancelButton:NO];
     });
