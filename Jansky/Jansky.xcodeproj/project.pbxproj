@@ -16,6 +16,7 @@
 		8B483450195B6A1900E09BA8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B48344F195B6A1900E09BA8 /* AVFoundation.framework */; };
 		8B483452195B6A2600E09BA8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B483451195B6A2600E09BA8 /* CoreTelephony.framework */; };
 		8B483454195B6AA000E09BA8 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B483453195B6AA000E09BA8 /* libc++.dylib */; };
+		8B5A131019805C8B003BBC52 /* DMCDedicationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A130F19805C8B003BBC52 /* DMCDedicationViewController.m */; };
 		8B7AE687194D0E7900BFBFC8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7AE686194D0E7900BFBFC8 /* Foundation.framework */; };
 		8B7AE689194D0E7900BFBFC8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7AE688194D0E7900BFBFC8 /* CoreGraphics.framework */; };
 		8B7AE68B194D0E7900BFBFC8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7AE68A194D0E7900BFBFC8 /* UIKit.framework */; };
@@ -66,7 +67,9 @@
 		8B48344F195B6A1900E09BA8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		8B483451195B6A2600E09BA8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		8B483453195B6AA000E09BA8 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		8B7AE683194D0E7900BFBFC8 /* Jansky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jansky.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B5A130E19805C8B003BBC52 /* DMCDedicationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMCDedicationViewController.h; sourceTree = SOURCE_ROOT; };
+		8B5A130F19805C8B003BBC52 /* DMCDedicationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMCDedicationViewController.m; sourceTree = SOURCE_ROOT; };
+		8B7AE683194D0E7900BFBFC8 /* RFID+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RFID+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7AE686194D0E7900BFBFC8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8B7AE688194D0E7900BFBFC8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8B7AE68A194D0E7900BFBFC8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -181,7 +184,7 @@
 		8B7AE684194D0E7900BFBFC8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8B7AE683194D0E7900BFBFC8 /* Jansky.app */,
+				8B7AE683194D0E7900BFBFC8 /* RFID+.app */,
 				8B7AE6A7194D0E7900BFBFC8 /* JanskyTests.xctest */,
 			);
 			name = Products;
@@ -215,6 +218,8 @@
 				8B12D9371964D13E00CF0C98 /* Categories */,
 				8B7AE69E194D0E7900BFBFC8 /* DMCDetailViewController.h */,
 				8B7AE69F194D0E7900BFBFC8 /* DMCDetailViewController.m */,
+				8B5A130E19805C8B003BBC52 /* DMCDedicationViewController.h */,
+				8B5A130F19805C8B003BBC52 /* DMCDedicationViewController.m */,
 				8B7AE6A1194D0E7900BFBFC8 /* Images.xcassets */,
 				8B7AE68D194D0E7900BFBFC8 /* Supporting Files */,
 			);
@@ -278,9 +283,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8B7AE682194D0E7900BFBFC8 /* Jansky */ = {
+		8B7AE682194D0E7900BFBFC8 /* RFID */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8B7AE6B8194D0E7900BFBFC8 /* Build configuration list for PBXNativeTarget "Jansky" */;
+			buildConfigurationList = 8B7AE6B8194D0E7900BFBFC8 /* Build configuration list for PBXNativeTarget "RFID" */;
 			buildPhases = (
 				AE04E788B5D5429F94344EDD /* Check Pods Manifest.lock */,
 				8B7AE67F194D0E7900BFBFC8 /* Sources */,
@@ -292,9 +297,9 @@
 			);
 			dependencies = (
 			);
-			name = Jansky;
+			name = RFID;
 			productName = Janksy;
-			productReference = 8B7AE683194D0E7900BFBFC8 /* Jansky.app */;
+			productReference = 8B7AE683194D0E7900BFBFC8 /* RFID+.app */;
 			productType = "com.apple.product-type.application";
 		};
 		8B7AE6A6194D0E7900BFBFC8 /* JanskyTests */ = {
@@ -326,7 +331,7 @@
 				ORGANIZATIONNAME = "Davander Mobile Corporation";
 				TargetAttributes = {
 					8B7AE682194D0E7900BFBFC8 = {
-						DevelopmentTeam = PK859SX878;
+						DevelopmentTeam = Y46W5VEHTW;
 					};
 					8B7AE6A6194D0E7900BFBFC8 = {
 						TestTargetID = 8B7AE682194D0E7900BFBFC8;
@@ -346,7 +351,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8B7AE682194D0E7900BFBFC8 /* Jansky */,
+				8B7AE682194D0E7900BFBFC8 /* RFID */,
 				8B7AE6A6194D0E7900BFBFC8 /* JanskyTests */,
 			);
 		};
@@ -422,6 +427,7 @@
 				8B7AE697194D0E7900BFBFC8 /* DMCAppDelegate.m in Sources */,
 				8B1ECC17194D47E800B26A34 /* DMCSession.m in Sources */,
 				8B7AE6C1194D0F3000BFBFC8 /* DMCScanCollection.m in Sources */,
+				8B5A131019805C8B003BBC52 /* DMCDedicationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,7 +447,7 @@
 /* Begin PBXTargetDependency section */
 		8B7AE6AD194D0E7900BFBFC8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8B7AE682194D0E7900BFBFC8 /* Jansky */;
+			target = 8B7AE682194D0E7900BFBFC8 /* RFID */;
 			targetProxy = 8B7AE6AC194D0E7900BFBFC8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -551,8 +557,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Neo Code Software Ltd (Y46W5VEHTW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Neo Code Software Ltd (Y46W5VEHTW)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Jansky/Jansky-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Jansky/Jansky-Info.plist";
@@ -562,7 +568,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "29FE5AC8-7028-4794-A770-6D21107613A2";
+				PROVISIONING_PROFILE = "B0A0DBD8-7F30-45C2-B616-AA59ABF87FB1";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -573,8 +579,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Neo Code Software Ltd (Y46W5VEHTW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Neo Code Software Ltd (Y46W5VEHTW)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Jansky/Jansky-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Jansky/Jansky-Info.plist";
@@ -584,7 +590,7 @@
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "29FE5AC8-7028-4794-A770-6D21107613A2";
+				PROVISIONING_PROFILE = "B0A0DBD8-7F30-45C2-B616-AA59ABF87FB1";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -641,7 +647,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8B7AE6B8194D0E7900BFBFC8 /* Build configuration list for PBXNativeTarget "Jansky" */ = {
+		8B7AE6B8194D0E7900BFBFC8 /* Build configuration list for PBXNativeTarget "RFID" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8B7AE6B9194D0E7900BFBFC8 /* Debug */,

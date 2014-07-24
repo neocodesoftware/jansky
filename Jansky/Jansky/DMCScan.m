@@ -38,7 +38,12 @@
         rawString = string;
     }
     
-    return [rawString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NSMutableCharacterSet * URLQueryPartAllowedCharacterSet = [[NSCharacterSet URLQueryAllowedCharacterSet] mutableCopy];
+    [URLQueryPartAllowedCharacterSet removeCharactersInRange:NSMakeRange('&', 1)]; // %26
+    [URLQueryPartAllowedCharacterSet removeCharactersInRange:NSMakeRange('=', 1)]; // %3D
+    [URLQueryPartAllowedCharacterSet removeCharactersInRange:NSMakeRange('?', 1)]; // %3F
+    
+    return [rawString stringByAddingPercentEncodingWithAllowedCharacters:URLQueryPartAllowedCharacterSet];
 }
 
 

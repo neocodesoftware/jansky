@@ -15,6 +15,7 @@
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="1Wb-gd-P42">
                         <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.0078431377187371254" green="0.69019609689712524" blue="0.7568628191947937" alpha="1" colorSpace="deviceRGB"/>
                     </toolbar>
                     <connections>
                         <segue destination="pGg-6v-bdr" kind="relationship" relationship="rootViewController" id="RxB-wf-QIq"/>
@@ -87,7 +88,7 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Jansky" id="tQt-TN-PWz"/>
+                    <navigationItem key="navigationItem" title="RFID+" id="tQt-TN-PWz"/>
                     <connections>
                         <outlet property="scanCancelButton" destination="VVZ-RK-W5k" id="ucf-7I-YTa"/>
                     </connections>
@@ -99,7 +100,7 @@
         <!--View Controller - Help-->
         <scene sceneID="SjW-mi-D0I">
             <objects>
-                <viewController title="Help" id="Jsk-iO-qyi" sceneMemberID="viewController">
+                <viewController title="Help" automaticallyAdjustsScrollViewInsets="NO" id="Jsk-iO-qyi" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WJm-Sg-2Hf"/>
                         <viewControllerLayoutGuide type="bottom" id="lQI-Z9-4IG"/>
@@ -108,10 +109,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07A-uz-WXd">
-                                <rect key="frame" x="20" y="84" width="280" height="440"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07A-uz-WXd">
+                                <rect key="frame" x="20" y="153" width="280" height="371"/>
                                 <string key="text">RFID+ is a product of Neo Code Software
 
 In order to scan RFID tags, a hardware accessory is required. The app can be used in "Simulation Mode" without hardware.
@@ -133,8 +132,8 @@ This app is built using the following open source libraries:
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NeoCodeLogo" translatesAutoresizingMaskIntoConstraints="NO" id="FGT-Kj-8ux">
-                                <rect key="frame" x="20" y="84" width="280" height="51"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="20" y="83" width="280" height="51"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="DnW-yD-hUu"/>
                                 </constraints>
@@ -142,20 +141,201 @@ This app is built using the following open source libraries:
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="FGT-Kj-8ux" firstAttribute="top" secondItem="WJm-Sg-2Hf" secondAttribute="bottom" constant="19" id="1Gm-7U-Iwy"/>
+                            <constraint firstItem="07A-uz-WXd" firstAttribute="leading" secondItem="MnK-n7-GWs" secondAttribute="leading" constant="20" id="ACA-Ph-hAS"/>
                             <constraint firstItem="lQI-Z9-4IG" firstAttribute="top" secondItem="07A-uz-WXd" secondAttribute="bottom" id="Q75-Bn-0WN"/>
                             <constraint firstItem="FGT-Kj-8ux" firstAttribute="leading" secondItem="MnK-n7-GWs" secondAttribute="leading" constant="20" id="YFQ-d0-dBa"/>
-                            <constraint firstItem="07A-uz-WXd" firstAttribute="top" secondItem="FGT-Kj-8ux" secondAttribute="bottom" constant="-51" id="gOq-3b-dFv"/>
+                            <constraint firstItem="07A-uz-WXd" firstAttribute="top" secondItem="FGT-Kj-8ux" secondAttribute="bottom" constant="19" id="gOq-3b-dFv"/>
                             <constraint firstAttribute="trailing" secondItem="FGT-Kj-8ux" secondAttribute="trailing" constant="20" id="gaw-UD-qbv"/>
-                            <constraint firstItem="FGT-Kj-8ux" firstAttribute="leading" secondItem="07A-uz-WXd" secondAttribute="leading" id="iAp-1b-SEU"/>
-                            <constraint firstItem="FGT-Kj-8ux" firstAttribute="top" secondItem="WJm-Sg-2Hf" secondAttribute="bottom" constant="20" id="ouc-5c-Xij"/>
                             <constraint firstAttribute="trailing" secondItem="07A-uz-WXd" secondAttribute="trailing" constant="20" id="yMZ-d7-RGE"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem width="8" style="plain" systemItem="fixedSpace" id="xuc-eE-3a0"/>
+                        <barButtonItem title="URL Scheme" id="b78-wK-Fkj">
+                            <connections>
+                                <segue destination="azf-LP-pAH" kind="push" id="gg6-ew-gV3"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="ILU-bg-Zl4"/>
+                        <barButtonItem title="Dedication" id="wQG-qt-rVw">
+                            <connections>
+                                <segue destination="0IL-TH-hPF" kind="push" id="kzO-F4-hbv"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem width="8" style="plain" systemItem="fixedSpace" id="54m-Th-Gpf"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Help" id="xg9-wd-YCg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Kw-xK-Asy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="997" y="-622"/>
+        </scene>
+        <!--View Controller - URL Scheme-->
+        <scene sceneID="OM4-go-RxD">
+            <objects>
+                <viewController id="azf-LP-pAH" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DzH-XL-kfk"/>
+                        <viewControllerLayoutGuide type="bottom" id="YgV-Hg-QXp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rMJ-FD-RgG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yMv-7o-D53">
+                                <rect key="frame" x="20" y="0.0" width="280" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="-20" maxY="0.0"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="RFID+ URL Scheme">
+                                        <attributes>
+                                            <font key="NSFont" size="24" name="HelveticaNeue-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+RFID+ can be used as a helper application, enabling RFID scanning from apps like FileMaker Go, Launch Center Pro, or even a website.
+
+To open RFID+ and and initiate a scan, use the following URL:
+
+    </string>
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="rfid://scan">
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="CourierNewPSMT"/>
+                                            <font key="NSOriginalFont" size="14" name="CourierNewPSMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+
+If you would like the code to be returned to your app, you can use a callback parameter.
+
+The callback parameter is a URL encoded string that is decoded and opened with the scanned value substituted.
+
+For example:
+
+    </string>
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="rfid://scan?callback=fmp%3A//%24/filename%3Fscript%3DScan%26param%3DEPC">
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="CourierNewPSMT"/>
+                                            <font key="NSOriginalFont" size="14" name="CourierNewPSMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+
+That will open RFID+, and once a code is scanned the callback URL will be opened if possible. In this case the resulting callback URL will be (where 12345 represents the scanned code):
+
+    </string>
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="fmp://$/filename?script=Scan&amp;param=12345">
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="CourierNewPSMT"/>
+                                            <font key="NSOriginalFont" size="14" name="CourierNewPSMT"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="yMv-7o-D53" secondAttribute="trailing" constant="20" id="53f-wY-buq"/>
+                            <constraint firstItem="yMv-7o-D53" firstAttribute="top" secondItem="rMJ-FD-RgG" secondAttribute="top" id="RDq-aZ-hO2"/>
+                            <constraint firstItem="yMv-7o-D53" firstAttribute="leading" secondItem="rMJ-FD-RgG" secondAttribute="leading" constant="20" id="jzD-6L-ook"/>
+                            <constraint firstAttribute="bottom" secondItem="yMv-7o-D53" secondAttribute="bottom" id="keJ-07-cWH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="URL Scheme" id="i9u-Oc-2w9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xGp-dD-JFh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1534" y="-948"/>
+        </scene>
+        <!--Dedication View Controller - Dedicated to Karl Jansky-->
+        <scene sceneID="bdW-bX-dU7">
+            <objects>
+                <viewController id="0IL-TH-hPF" customClass="DMCDedicationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4Dy-mh-MxW"/>
+                        <viewControllerLayoutGuide type="bottom" id="CnQ-aa-NJO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7bt-Cq-5NS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" image="karl_jansky" translatesAutoresizingMaskIntoConstraints="NO" id="e9K-o8-6sj">
+                                <rect key="frame" x="0.0" y="64" width="320" height="420"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Learn Explore Wonder&quot;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MOg-6G-xao">
+                                <rect key="frame" x="68" y="493" width="185" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="MOg-6G-xao" secondAttribute="centerX" id="5Jz-S4-MCW"/>
+                            <constraint firstItem="e9K-o8-6sj" firstAttribute="leading" secondItem="7bt-Cq-5NS" secondAttribute="leading" id="ACU-se-UpI"/>
+                            <constraint firstItem="e9K-o8-6sj" firstAttribute="top" secondItem="4Dy-mh-MxW" secondAttribute="bottom" id="RXl-Mr-GTZ"/>
+                            <constraint firstItem="MOg-6G-xao" firstAttribute="top" secondItem="e9K-o8-6sj" secondAttribute="bottom" constant="9" id="iLV-pm-cYp"/>
+                            <constraint firstAttribute="trailing" secondItem="e9K-o8-6sj" secondAttribute="trailing" id="jjG-SQ-7Xz"/>
+                            <constraint firstItem="CnQ-aa-NJO" firstAttribute="top" secondItem="MOg-6G-xao" secondAttribute="bottom" constant="10" id="xVV-lb-rRo"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="ttK-2E-Xw0"/>
+                        <barButtonItem title="Wikipedia" id="xSY-B7-gPa">
+                            <connections>
+                                <action selector="openWikipedia:" destination="0IL-TH-hPF" id="lks-SX-fPO"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="qKL-Cf-oUa"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Dedicated to Karl Jansky" id="8Ql-rV-zgW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cIY-D0-ZBW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1540" y="-282"/>
         </scene>
         <!--Detail View Controller - Detail-->
         <scene sceneID="Cn3-H9-jdl">
@@ -178,32 +358,27 @@ This app is built using the following open source libraries:
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcs-u5-1t8">
                                 <rect key="frame" x="20" y="85" width="48" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last scanned:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEh-2b-HjK">
                                 <rect key="frame" x="20" y="143" width="111" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last scanned date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vy6-i9-QC4">
                                 <rect key="frame" x="40" y="172" width="260" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan count:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNS-lA-rMS">
                                 <rect key="frame" x="20" y="201" width="95" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan count" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFa-6n-SXe">
                                 <rect key="frame" x="40" y="230" width="260" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -283,13 +458,11 @@ This app is built using the following open source libraries:
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Simulation mode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mV3-9G-eeY">
                                                     <rect key="frame" x="15" y="30" width="130" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3PI-VD-LPS">
                                                     <rect key="frame" x="254" y="25" width="51" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <action selector="simulationSwitchAction:" destination="DWA-bh-aO4" eventType="valueChanged" id="ORV-aR-IrT"/>
                                                     </connections>
@@ -318,7 +491,9 @@ This app is built using the following open source libraries:
     </scenes>
     <resources>
         <image name="NeoCodeLogo" width="280" height="26"/>
+        <image name="karl_jansky" width="245" height="322"/>
     </resources>
+    <color key="tintColor" red="0.0078431377187371254" green="0.69019609689712524" blue="0.7568628191947937" alpha="1" colorSpace="deviceRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
